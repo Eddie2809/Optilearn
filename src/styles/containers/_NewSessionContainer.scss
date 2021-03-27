@@ -1,0 +1,78 @@
+.NewSessionContainer{
+    position: absolute;
+    height: 87%;
+    width: 100%;
+    background-color: white;
+    border-radius: 0 0 5px 5px;
+    transition: transform 0.8s;
+    backface-visibility: hidden;
+    padding: 10px 24px 6px 24px;
+    
+    .form{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        p{
+            font-size: 21px;
+            color: gray;
+        }
+        .topic-date-review{
+            
+            & > *{
+                margin-bottom: 14px;
+            }
+            width: 262px;
+            margin-right: 31px;
+            .date{
+                display: flex;
+                justify-content: space-between;
+                select{
+                    height: 20px;
+                    border-radius: 5px;
+                    border: 1px solid #d5d5d5;
+                    position: relative;
+                }
+            }
+        }
+        .references{
+            width: 262px;
+            & > *{
+                margin-bottom: 14px;
+            }
+            textarea{
+                height: 170px;
+                border-radius: 5px;
+                border: 1px solid #d5d5d5;
+                resize: none;
+                padding: 5px;
+            }
+        }
+        input,select{
+            height: 20px;
+            border-radius: 5px;
+            border: 1px solid #d5d5d5;
+            width: 262px;
+            padding-left: 4px;
+        }
+    }
+    
+    button{
+        width: 108px;
+        height: 35px;
+        font-size: 18px;
+        color: $letters;
+        background-color: white;
+        padding: 5px 24px 5px 24px;
+        border: 1px solid $main-blue;
+        border-radius: 5px;
+    }
+}
+#day{
+    width: 57px;
+}
+#month{
+    width: 105px;
+}
+#year{
+    width: 80px;
+}

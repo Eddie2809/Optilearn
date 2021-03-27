@@ -1,0 +1,49 @@
+.Login{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .form{
+        padding: 20px;
+        margin-top: 40px;
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        height: 305px;
+        width: 400px;
+        display: flex;
+        flex-direction: column;
+        p{
+            align-self: center;
+            font-size: 1.5em;
+            margin-bottom: 40px;
+        }
+        .signin-link{
+            color: rgb(54, 188, 241);
+            text-decoration: underline;
+            font-size: 1em;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+        input{
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            height: 35px;
+            padding: 5px;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        button{
+            background-color: $main-blue;
+            border-radius: 10px;
+            color: white;
+            width: 150px;
+            height: 40px;
+            border: none;
+            align-self: center;
+            font-size: 1em;
+            margin-bottom: 5px;
+        }
+    }
+}

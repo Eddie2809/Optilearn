@@ -1,0 +1,54 @@
+.NewSessionAndTimerContainer{
+    width: 37.875em;
+    height: 20.25em;
+    padding: 0;
+    position: relative;
+    margin-bottom: 30px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+
+.NewSessionAndTimerContainerTop{
+    height: 13%;
+    background-color: $main-blue;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding: 4px 28px 4px 28px;
+    border-radius: 5px 5px 0 0;
+    position: relative;
+
+    p{
+        color: white;
+        font-size: 18px;
+        transition: transform 0.8s;
+        backface-visibility: hidden;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        width: 300px;
+        text-align: center;
+    }
+    
+}    
+.flipY{
+    transform: rotateY(180deg);
+}
+.flipX{
+    transform: rotateX(180deg);
+}
+
+.PomodoroContainer{
+    background-color: lightblue;
+    height: 87%;
+    width: 100%;
+    border-radius: 0 0 5px 5px;
+    display: flex;
+    position: absolute;
+    transition: transform 0.8s;
+    backface-visibility: hidden;
+}
+

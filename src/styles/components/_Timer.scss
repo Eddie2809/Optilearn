@@ -1,0 +1,83 @@
+.Timer{
+    width: 148px;
+    height: 52px;
+    background-color: lightgray;
+    border-radius: 17px;
+    display: flex;
+    padding: 15px 24px 15px 24px;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    p{
+        z-index: 5;
+        font-family: 'Consolas', Arial, sans-serif;
+        font-size: 26.62px;
+        color: white;
+    }
+    &::before{
+        content: "";
+        width: 74px;
+        height: 52px;
+        background-color: gray;
+        position: absolute;
+        border-radius: 17px 0 0 17px;
+        top: 0;
+        left: 0;
+    }
+}
+
+.PomodoroClock{
+    height: 100%;
+    background-color: lightgreen;
+    width: 40%;
+    border-radius: 0 0 0 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    .clock{
+        width: 127px;
+        width: 127px;
+        position: relative;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+        .clock-hand{
+            position: absolute;
+            top: 22px;
+            left: 55px;
+            transform-origin: 8.6px 44.4px;
+        }
+    }
+}
+.PomodoroSettings{
+    height: 100%;
+    background-color: pink;
+    width: 60%;
+    border-radius: 0 0 30px 0;
+}
+
+.runTimer{
+    animation:spin 60s linear infinite;
+}
+
+.pause{
+    animation-play-state: paused;
+}
+
+.continue{
+    animation-play-state:running;
+}
+
+@keyframes spin { 
+    0% { 
+      -webkit-transform: rotate(0deg);
+      transform:rotate(0deg);
+    }
+    100% { 
+      -webkit-transform: rotate(360deg);
+      transform:rotate(360deg);
+    }
+  }

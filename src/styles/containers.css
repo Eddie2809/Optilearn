@@ -1,0 +1,9 @@
+.TimerContainer {
+  width: 37.875em;
+  height: 20.25em;
+  border-radius: 30px;
+  padding: 0;
+}
+
+@import 'TopNav'
+/*# sourceMappingURL=containers.css.map */

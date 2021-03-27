@@ -1,0 +1,53 @@
+.PomodoroSettings{
+    padding: 40px 22px 34px 39px;
+    height: 100%;
+    .settings{
+        margin-bottom: 10px;
+        .settings-row{
+            height: 34px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            p{
+                font-size: 13px;
+                width: 80%;
+            }
+            input{
+                width: 20%;
+                height: 26px;
+                border-radius: 8px;
+                border: none;
+            }
+        }
+    }
+    .clock-buttons{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        button{
+            width: 56px;
+            height: 26px;
+            border-radius: 12px;
+            background-color: gray;
+            border: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        button:not(:last-child){
+            margin-right: 20px;
+        }
+        #play{
+            background-color: #4AC563;
+        }
+        #pause{
+            background-color: #EBF144;
+        }
+        #stop{
+            background-color: #F55353;
+        }
+        button:active{
+            transform: scale(0.95);
+        }
+    }
+}

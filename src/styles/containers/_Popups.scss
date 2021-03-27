@@ -1,0 +1,318 @@
+.Reschedule{
+    height: 150px;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    .quit{
+        right: 10px;
+        top: 15px;
+    }
+    p{
+        font-size: 18px;
+        text-align: center;
+    }
+    button{
+        height: 30px;
+        width: 50px;
+        font-size: 16px;
+        background-color: $main-blue;
+        border: none;
+        border-radius: 5px;
+        color: white;
+    }
+    select{
+        border-radius: 5px;
+        border: 1px solid #d5d5d5;
+        &:not(:last-child){
+            margin-right: 20px;
+        }
+    }
+}
+
+.DeleteHistory{
+    width: 328px;
+    height: 160px;
+    font-size: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    .quit{
+        top: 15px;
+        right: 10px;
+    }
+    button{
+        font-size: 15px;
+        border-radius: 5px;
+        padding: 5px;
+    }
+    .cancel{
+        background-color: white;
+        border: 1px solid black;
+        margin-right: 20px;
+    }
+    .delete{
+        background-color: $red;
+        font-weight: 800;
+        color: white;
+        border: 1px solid $red;
+    }
+    .warning{
+        font-size: 12px;
+    }
+}
+
+.DeleteMissed{
+    width: 328px;
+    height: 160px;
+    font-size: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    .quit{
+        top: 15px;
+        right: 10px;
+    }
+    button{
+        font-size: 15px;
+        border-radius: 5px;
+        padding: 5px;
+    }
+    .cancel{
+        background-color: white;
+        border: 1px solid black;
+        margin-right: 20px;
+    }
+    .delete{
+        background-color: $red;
+        font-weight: 800;
+        color: white;
+        border: 1px solid $red;
+    }
+    .warning{
+        font-size: 12px;
+    }
+}
+
+.EditTopic{
+    width: 400px;
+    height: 500px;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    color: $letters;
+    &>p{
+        text-align: center;
+        margin-bottom: 25px;
+    }
+    .name{
+        display: flex;
+        align-items: center; 
+        margin-bottom: 15px;
+        p{
+            margin-right: 10px;
+        }
+        input{
+            height: 23px;
+            width: 280px;
+            padding: 3px;
+            border-radius: 5px;
+            border: 1px solid #d5d5d5;
+        }
+    }
+    .references{
+        margin-bottom: 15px;
+        p{
+            margin-bottom: 5px;
+        }
+        textarea{
+            resize: none;
+            padding: 3px;
+            border-radius: 5px;
+            border: 1px solid #d5d5d5;
+            width: 375px;
+            height: 100px;
+        }
+    }
+    .reviews{
+        margin-bottom: 15px;
+        div{
+            display: flex;
+            align-items: center;
+            svg{
+                cursor: pointer;
+                margin-left: 10px;
+            }
+        }
+        &>p{
+            margin-bottom: 5px;
+        }
+        ol{
+            height: 150px;
+            overflow: auto;
+            //border: 1px solid #d5d5d5;
+            padding-left: 30px;
+        }
+    }
+    .quit{
+        top: 15px;
+        right: 10px;
+    }
+    button{
+        font-size: 18px;
+        width: 70px;
+        border-radius: 5px;
+        padding: 5px;
+        border: none;
+        background-color: $main-blue;
+        color: white;
+        align-self: center;
+    }
+}
+
+.DeleteTopic{
+    width: 328px;
+    height: 160px;
+    font-size: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    .quit{
+        top: 15px;
+        right: 10px;
+    }
+    button{
+        font-size: 15px;
+        border-radius: 5px;
+        padding: 5px;
+    }
+    .cancel{
+        background-color: white;
+        border: 1px solid black;
+        margin-right: 20px;
+    }
+    .delete{
+        background-color: $red;
+        font-weight: 800;
+        color: white;
+        border: 1px solid $red;
+    }
+    .warning{
+        font-size: 12px;
+    }
+}
+
+.ReferencesPopup{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 200px;
+    .quit{
+        top: 20px;
+        right: 15px;
+    }
+    .title{
+        font-size: 1.3em;
+        margin-bottom: 10px; 
+    }
+    .box{
+        height: 100px;
+        border: 1px solid #ddd;
+        width: 300px;
+        padding: 5px;
+        overflow: auto;
+        border-radius: 5px;
+    }
+}
+
+.DeleteCompletedTopics{
+    width: 328px;
+    height: 160px;
+    font-size: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    .quit{
+        top: 15px;
+        right: 10px;
+    }
+    button{
+        font-size: 15px;
+        border-radius: 5px;
+        padding: 5px;
+    }
+    .cancel{
+        background-color: white;
+        border: 1px solid black;
+        margin-right: 20px;
+    }
+    .delete{
+        background-color: $red;
+        font-weight: 800;
+        color: white;
+        border: 1px solid $red;
+    }
+    .warning{
+        font-size: 12px;
+    }
+}
+.AddCustomizedReviews{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    button{
+        margin-top: 10px;
+        width: 90px;
+        height: 40px;
+        color: white;
+        background-color: $main-blue;
+        border: none;
+        font-size: 1em;
+        border-radius: 10px;
+        font-weight: 900;
+    }
+    .list{
+        height: 200px;
+        width: 200px;
+        overflow: auto;
+        padding: 10px;
+        background-color: rgb(238, 238, 238);
+        border-radius: 30px;
+        margin-top: 10px;
+        text-align: center;
+        ul{
+            list-style: none;
+        }
+    }
+    input{
+        width: 60px;
+    }
+    #reviewName{
+        width: 200px;
+    }
+    .text{
+        font-size: 0.9em;
+        margin-bottom: 10px;
+    }
+    .title{
+        text-align: center;
+        font-weight: 900;
+        margin-bottom: 20px;
+    }
+    .quit{
+        top: 15px;
+        right: 10px;
+    }
+}

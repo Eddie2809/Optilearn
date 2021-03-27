@@ -1,0 +1,148 @@
+.SwitchBotton {
+  cursor: pointer;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 53px;
+  height: 29px;
+  justify-self: flex-end;
+}
+
+.SwitchBotton .circle {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 25px;
+  height: 25px;
+  background-color: white;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+.SwitchBotton .timer {
+  left: calc(100% - 2px);
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+}
+
+.Timer {
+  width: 148px;
+  height: 52px;
+  background-color: lightgray;
+  border-radius: 17px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 15px 24px 15px 24px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+
+.Timer p {
+  z-index: 5;
+  font-family: 'Consolas', Arial, sans-serif;
+  font-size: 26.62px;
+  color: white;
+}
+
+.Timer::before {
+  content: "";
+  width: 74px;
+  height: 52px;
+  background-color: gray;
+  position: absolute;
+  border-radius: 17px 0 0 17px;
+  top: 0;
+  left: 0;
+}
+
+.PomodoroClock {
+  height: 100%;
+  background-color: lightgreen;
+  width: 40%;
+  border-radius: 0 0 0 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.PomodoroClock .clock {
+  width: 127px;
+  width: 127px;
+  position: relative;
+}
+
+.PomodoroClock .clock img {
+  width: 100%;
+  height: 100%;
+}
+
+.PomodoroClock .clock .clock-hand {
+  position: absolute;
+  top: 22px;
+  left: 55px;
+  -webkit-transform-origin: 8.6px 44.4px;
+          transform-origin: 8.6px 44.4px;
+}
+
+.PomodoroSettings {
+  height: 100%;
+  background-color: pink;
+  width: 60%;
+  border-radius: 0 0 30px 0;
+}
+
+.runTimer {
+  -webkit-animation: spin 60s linear infinite;
+          animation: spin 60s linear infinite;
+}
+
+.pause {
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
+
+.continue {
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+/*# sourceMappingURL=components.css.map */

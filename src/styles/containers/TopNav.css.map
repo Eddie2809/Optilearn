@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,OAAO,CAAA;EACH,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,IAAI;EACZ,gBAAgB,ECmBX,OAAkB;CDlB1B",
+    "sources": [
+        "TopNav.scss",
+        "variables.scss"
+    ],
+    "names": [],
+    "file": "TopNav.css"
+}

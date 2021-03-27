@@ -1,0 +1,204 @@
+@import '../variables';
+
+.TopNav{
+    width: 100%;
+    height: 3.625rem;
+    background-color: $cream;
+    display: flex;
+    align-items: center;
+    padding: 2px 15px 2px 15px;
+    box-shadow: 0 2px 6px #D5D5D5;
+    @media (max-width: 1050px){
+        justify-content: space-between;
+    }
+    .nav-option{
+        display: inline-block;
+        font-size: 20px;
+        color: $letters;
+        cursor: pointer;
+        &:not(:last-child){
+            margin-right: 20px;
+        }
+        &::before{
+            content: "";
+            display: block;
+            height: 2px;
+            position:relative;
+            left: 0;
+            right: 0;
+            top: 30px;
+        }
+        &:hover{
+            &::before{
+                background: linear-gradient(to right,rgb(109, 245, 255),rgb(203, 252, 255));
+            }
+        }
+    }
+    button{
+        width: 114px;
+        height: 30px;
+        background-color: lightgray;
+        border: none;
+        border-radius: 8px;
+    }
+    .HamburgerMenu{
+        cursor: pointer;
+    }
+    .hm-line{
+        height: 3px;
+        width: 27px;
+        background-color: $main-blue;
+        &:not(:last-child){
+            margin-bottom: 3px;
+        }
+    }
+    .Leftnav{
+        width: 42%;
+    }
+    .Logo{
+        display: flex;
+        justify-content: center;
+        height: 100%;
+        width: 16%;
+        @media (max-width: 1050px){
+            width: 200px;
+            justify-self: flex-end;
+        }
+    }
+    .Rightnav{
+        text-align: end;
+        width: 42%;
+    }
+
+}
+.History{
+    width: 386px;
+    margin-left: 115px;
+    .list{
+        height: 368px;
+        .list-item{
+            p{
+                font-size: 15px;
+            }
+            .date{
+                width: 85px;
+            }
+            .name{
+                width: 207px;
+            }
+            input{
+                width: 50px;
+            }
+        }
+    }
+    .delete-history{
+        height: 38px;
+        width: 100%;
+        background-color: $red;
+        border-radius: 0 0 10px 10px;
+        color: white;
+        font-size: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+}
+.Missed{
+    width: 406px;
+    margin-left: 210px;
+    .list{
+        height: 368px;
+        .list-item{
+            svg{
+                width: 30px;
+                cursor: pointer;
+            }
+            p{
+                font-size: 15px;
+            }
+            .date{
+                width: 85px;
+            }
+            .name{
+                width: 207px;
+            }
+            .checkbox{
+                margin-left: 13px;
+            }
+        }
+    }
+    .delete-missed-reviews{
+        height: 38px;
+        width: 100%;
+        background-color: $red;
+        border-radius: 0 0 10px 10px;
+        color: white;
+        font-size: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+}
+.MyTopics{
+    width: 386px;
+    display: flex;
+    flex-direction: column;
+    .show-completed-topics{
+        align-self: flex-end;
+        font-size: 0.8em;
+        display: flex;
+        align-items: center;
+        margin-top: 5px;
+        margin-right: 15px;
+        input{
+            margin-left: 5px;
+        }
+    }
+    .list{
+        height: 100%;
+        .list-item{
+            justify-content: space-between;
+            p{
+                font-size: 15px;
+            }
+            .name{
+                width: 207px;
+            }
+            .delete{
+                background-color: $red;
+                font-weight: 800;
+            }
+            button{
+                background-color: $main-blue;
+                color: white;
+                width: 55px;
+            }
+        }
+    }
+    .delete-completed-topics{
+        height: 38px;
+        width: 100%;
+        background-color: $red;
+        border-radius: 0 0 10px 10px;
+        color: white;
+        font-size: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+}
+.Settings{
+    width: 386px;
+}
+.tab{
+    position: absolute;
+    top: 55px;
+    z-index: 99;
+    background-color: white;
+    height: 406px;
+    border: 1px solid #d5d5d5;
+    border-radius: 10px;
+}
