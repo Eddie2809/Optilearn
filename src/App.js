@@ -57,7 +57,7 @@ export default class App extends Component {
   }
 
   newCustomizedReview = (name,days) => {
-    fetch('http://localhost:3001/new-customized-review', {
+    fetch('https://gentle-escarpment-66308.herokuapp.com/new-customized-review', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -73,7 +73,7 @@ export default class App extends Component {
   }
 
   editTopic = (newTopicName, newReferences,topicId) => {
-    fetch('http://localhost:3001/edit-topic', {
+    fetch('https://gentle-escarpment-66308.herokuapp.com/edit-topic', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -118,7 +118,7 @@ export default class App extends Component {
   }
 
   newTopic = (topicName,references,date,reviewArray) => {
-    fetch('http://localhost:3001/new-topic', {
+    fetch('https://gentle-escarpment-66308.herokuapp.com/new-topic', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -132,11 +132,12 @@ export default class App extends Component {
     .then(response=>response.json())
     .then(res => {
         this.getUserData(this.state.user)
+        this.getUserData(this.state.user)
     })
   }
 
   deleteTopic = (topicId) => {
-    fetch('http://localhost:3001/delete-topic', {
+    fetch('https://gentle-escarpment-66308.herokuapp.com/delete-topic', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -151,7 +152,7 @@ export default class App extends Component {
   }
 
   deleteMissed = () => {
-    fetch('http://localhost:3001/delete-missed', {
+    fetch('https://gentle-escarpment-66308.herokuapp.com/delete-missed', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -165,7 +166,7 @@ export default class App extends Component {
   }
 
   deleteHistory = () => {
-    fetch('http://localhost:3001/delete-history', {
+    fetch('https://gentle-escarpment-66308.herokuapp.com/delete-history', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -181,7 +182,7 @@ export default class App extends Component {
 
   //selector: 1=Edit, 2=Missed
   reschedule = (reviewId,date,selector) => {
-    fetch('http://localhost:3001/reschedule', {
+    fetch('https://gentle-escarpment-66308.herokuapp.com/reschedule', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -223,7 +224,7 @@ export default class App extends Component {
   }
 
   undoReview = (reviewId,topicId,numberOfCompletedReviews,numberOfReviews) => {
-    fetch('http://localhost:3001/undo-review', {
+    fetch('https://gentle-escarpment-66308.herokuapp.com/undo-review', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -240,7 +241,7 @@ export default class App extends Component {
   }
 
   doReview = (reviewId,topicId,numberOfCompletedReviews,numberOfReviews) => {
-    fetch('http://localhost:3001/do-review', {
+    fetch('https://gentle-escarpment-66308.herokuapp.com/do-review', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -339,7 +340,7 @@ export default class App extends Component {
   }
 
   getUserData = (user) => {
-    fetch('http://localhost:3001/topics', {
+    fetch('https://gentle-escarpment-66308.herokuapp.com/topics', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -348,7 +349,7 @@ export default class App extends Component {
     })
     .then(response=>response.json())
     .then(topics=>{
-      fetch('http://localhost:3001/reviews',{
+      fetch('https://gentle-escarpment-66308.herokuapp.com/reviews',{
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
@@ -357,7 +358,7 @@ export default class App extends Component {
       })
       .then(response=>response.json())
       .then(reviews=>{
-        fetch('http://localhost:3001/get-customized-reviews',{
+        fetch('https://gentle-escarpment-66308.herokuapp.com/get-customized-reviews',{
           method: 'post',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({

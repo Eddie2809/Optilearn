@@ -2,7 +2,7 @@
   "name": "optilearn",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Eddie2809.github.io/optilearn",
+  "homepage": "https://eddie2809.github.io/optilearn/",
   "dependencies": {
     "@fullcalendar/daygrid": "^5.5.0",
     "@fullcalendar/react": "^5.5.0",
