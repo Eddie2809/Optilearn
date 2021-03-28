@@ -323,6 +323,8 @@ export default class App extends Component {
     missed.sort((a, b) => a.date - b.date);
     missed.reverse()
 
+    console.log(missed)
+
     this.setState({
       user: {
         id: user.id,
@@ -367,10 +369,6 @@ export default class App extends Component {
         })
         .then(response=>response.json())
         .then(userCustomizedReviews=>{
-          console.log(user)
-          console.log(topics)
-          console.log(reviews)
-          console.log(userCustomizedReviews)
           this.loadUser(user,topics,reviews,userCustomizedReviews)
         })
       })
