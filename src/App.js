@@ -57,7 +57,7 @@ export default class App extends Component {
   }
 
   newCustomizedReview = (name,days) => {
-    fetch('https://tranquil-meadow-47562.herokuapp.com//new-customized-review', {
+    fetch('https://tranquil-meadow-47562.herokuapp.com/new-customized-review', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
