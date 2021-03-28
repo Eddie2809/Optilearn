@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/optilearn/static/css/main.b802bc95.chunk.css",
-    "main.js": "/optilearn/static/js/main.52ad3a42.chunk.js",
-    "main.js.map": "/optilearn/static/js/main.52ad3a42.chunk.js.map",
+    "main.js": "/optilearn/static/js/main.2ff5dc11.chunk.js",
+    "main.js.map": "/optilearn/static/js/main.2ff5dc11.chunk.js.map",
     "runtime-main.js": "/optilearn/static/js/runtime-main.70af34a6.js",
     "runtime-main.js.map": "/optilearn/static/js/runtime-main.70af34a6.js.map",
     "static/css/2.f0fce20c.chunk.css": "/optilearn/static/css/2.f0fce20c.chunk.css",
@@ -22,6 +22,6 @@
     "static/css/2.f0fce20c.chunk.css",
     "static/js/2.f91589db.chunk.js",
     "static/css/main.b802bc95.chunk.css",
-    "static/js/main.52ad3a42.chunk.js"
+    "static/js/main.2ff5dc11.chunk.js"
   ]
 }
