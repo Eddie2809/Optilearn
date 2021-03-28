@@ -288,6 +288,7 @@ export default class App extends Component {
     let missed = []
     for(let i = 0; i<reviews.length;i++){
       time = new Date(reviews[i].review_date)
+      console.log(time)
       if(time.getTime()<today.getTime()&&!reviews[i].done){
         missed.push({
           date: time.getTime(),
@@ -322,8 +323,6 @@ export default class App extends Component {
     upcomingReviews.sort((a, b) => a.date - b.date)
     missed.sort((a, b) => a.date - b.date);
     missed.reverse()
-
-    console.log(missed)
 
     this.setState({
       user: {
