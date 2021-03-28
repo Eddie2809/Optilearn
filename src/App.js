@@ -57,7 +57,7 @@ export default class App extends Component {
   }
 
   newCustomizedReview = (name,days) => {
-    fetch('https://gentle-escarpment-66308.herokuapp.com/new-customized-review', {
+    fetch('https://tranquil-meadow-47562.herokuapp.com//new-customized-review', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -73,7 +73,7 @@ export default class App extends Component {
   }
 
   editTopic = (newTopicName, newReferences,topicId) => {
-    fetch('https://gentle-escarpment-66308.herokuapp.com/edit-topic', {
+    fetch('https://tranquil-meadow-47562.herokuapp.com/edit-topic', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -118,7 +118,7 @@ export default class App extends Component {
   }
 
   newTopic = (topicName,references,date,reviewArray) => {
-    fetch('https://gentle-escarpment-66308.herokuapp.com/new-topic', {
+    fetch('https://tranquil-meadow-47562.herokuapp.com/new-topic', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -137,7 +137,7 @@ export default class App extends Component {
   }
 
   deleteTopic = (topicId) => {
-    fetch('https://gentle-escarpment-66308.herokuapp.com/delete-topic', {
+    fetch('https://tranquil-meadow-47562.herokuapp.com/delete-topic', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -152,7 +152,7 @@ export default class App extends Component {
   }
 
   deleteMissed = () => {
-    fetch('https://gentle-escarpment-66308.herokuapp.com/delete-missed', {
+    fetch('https://tranquil-meadow-47562.herokuapp.com/delete-missed', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -166,7 +166,7 @@ export default class App extends Component {
   }
 
   deleteHistory = () => {
-    fetch('https://gentle-escarpment-66308.herokuapp.com/delete-history', {
+    fetch('https://tranquil-meadow-47562.herokuapp.com/delete-history', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -182,7 +182,7 @@ export default class App extends Component {
 
   //selector: 1=Edit, 2=Missed
   reschedule = (reviewId,date,selector) => {
-    fetch('https://gentle-escarpment-66308.herokuapp.com/reschedule', {
+    fetch('https://tranquil-meadow-47562.herokuapp.com/reschedule', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -224,7 +224,7 @@ export default class App extends Component {
   }
 
   undoReview = (reviewId,topicId,numberOfCompletedReviews,numberOfReviews) => {
-    fetch('https://gentle-escarpment-66308.herokuapp.com/undo-review', {
+    fetch('https://tranquil-meadow-47562.herokuapp.com/undo-review', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -241,7 +241,7 @@ export default class App extends Component {
   }
 
   doReview = (reviewId,topicId,numberOfCompletedReviews,numberOfReviews) => {
-    fetch('https://gentle-escarpment-66308.herokuapp.com/do-review', {
+    fetch('https://tranquil-meadow-47562.herokuapp.com/do-review', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -340,7 +340,7 @@ export default class App extends Component {
   }
 
   getUserData = (user) => {
-    fetch('https://gentle-escarpment-66308.herokuapp.com/topics', {
+    fetch('https://tranquil-meadow-47562.herokuapp.com/topics', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -349,7 +349,7 @@ export default class App extends Component {
     })
     .then(response=>response.json())
     .then(topics=>{
-      fetch('https://gentle-escarpment-66308.herokuapp.com/reviews',{
+      fetch('https://tranquil-meadow-47562.herokuapp.com/reviews',{
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
@@ -358,7 +358,7 @@ export default class App extends Component {
       })
       .then(response=>response.json())
       .then(reviews=>{
-        fetch('https://gentle-escarpment-66308.herokuapp.com/get-customized-reviews',{
+        fetch('https://tranquil-meadow-47562.herokuapp.com/get-customized-reviews',{
           method: 'post',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({

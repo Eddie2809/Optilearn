@@ -10,7 +10,7 @@ export default class Login extends Component{
         }
     }
     onSubmit = () => {
-        fetch('https://gentle-escarpment-66308.herokuapp.com/login', {
+        fetch('https://tranquil-meadow-47562.herokuapp.com/login', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
