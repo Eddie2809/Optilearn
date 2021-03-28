@@ -367,6 +367,10 @@ export default class App extends Component {
         })
         .then(response=>response.json())
         .then(userCustomizedReviews=>{
+          console.log(user)
+          console.log(topics)
+          console.log(reviews)
+          console.log(userCustomizedReviews)
           this.loadUser(user,topics,reviews,userCustomizedReviews)
         })
       })
