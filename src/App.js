@@ -288,6 +288,7 @@ export default class App extends Component {
     let missed = []
     for(let i = 0; i<reviews.length;i++){
       time = new Date(reviews[i].review_date)
+      console.log(reviews[i].review_date)
       console.log(time)
       if(time.getTime()<today.getTime()&&!reviews[i].done){
         missed.push({
