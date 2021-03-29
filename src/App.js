@@ -272,7 +272,7 @@ export default class App extends Component {
 
     for(let i = 0;i<reviews.length;i++){
       if(reviews[i].done){
-        time = new Date(reviews[i].review_date)
+        time = new Date((reviews[i].review_date).slice(0,10)+'T00:00:00')
         history.push({
           date: time.getTime(),
           id: reviews[i].id,
@@ -287,7 +287,7 @@ export default class App extends Component {
     //Conseguir sesiones perdidas ordenadas por fecha
     let missed = []
     for(let i = 0; i<reviews.length;i++){
-      time = new Date(reviews[i].review_date)
+      time = new Date((reviews[i].review_date).slice(0,10)+'T00:00:00')
       console.log(reviews[i].review_date)
       console.log(time)
       if(time.getTime()<today.getTime()&&!reviews[i].done){
@@ -305,7 +305,7 @@ export default class App extends Component {
     //Conseguir proximas sesiones ordenadas por fecha
     let upcomingReviews = []
     for(let i = 0; i<reviews.length;i++){
-      time = new Date(reviews[i].review_date)
+      time = new Date((reviews[i].review_date).slice(0,10)+'T00:00:00')
       if(time.getTime()>=today.getTime()&&!reviews[i].done){
         
         upcomingReviews.push({
