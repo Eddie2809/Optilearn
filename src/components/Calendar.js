@@ -9,7 +9,8 @@ export default class Calendar extends React.Component{
         let events = []
         let mapTopicIdName = new Map()
         for(let i = 0; i < this.props.topics.length; i++){
-            date = new Date(this.props.topics[i].first_session_date)
+            //date = new Date(this.props.topics[i].first_session_date)
+            date = new Date((this.props.topics[i].first_session_date).slice(0,10)+'T00:00:00')
             mapTopicIdName[this.props.topics[i].id] = this.props.topics[i].name
             events.push({
                 title: this.props.topics[i].name,
@@ -21,7 +22,8 @@ export default class Calendar extends React.Component{
         }
 
         for(let i = 0; i < this.props.reviews.length; i++){
-            date = new Date(this.props.reviews[i].review_date)
+            //date = new Date(this.props.reviews[i].review_date)
+            date = new Date((this.props.reviews[i].review_date).slice(0,10)+'T00:00:00')
             color = (this.props.reviews[i].done? "#4AC563":"#EBF144")
             events.push({
                 title: mapTopicIdName[this.props.reviews[i].topic_id],

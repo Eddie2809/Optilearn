@@ -35,7 +35,8 @@
             let day
             let month
             let topicReviewsElements = topicReviews.map((r,i)=>{
-                reviewDate = new Date(r.review_date)
+                //reviewDate = new Date(r.review_date)
+                reviewDate = new Date((r.review_date).slice(0,10)+'T00:00:00')
                 day = reviewDate.getDate()<10? "0" + reviewDate.getDate(): reviewDate.getDate()
                 month = (reviewDate.getMonth()+1)<10? "0" + (reviewDate.getMonth()+1): (reviewDate.getMonth()+1)
                 reviewDate = day + "/" + month + "/" + reviewDate.getFullYear()
