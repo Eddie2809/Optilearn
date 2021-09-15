@@ -1137,6 +1137,67 @@ button {
   right: 10px;
 }
 
+.loading-particle {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+  background-color: #00adb5;
+  margin-left: 10px;
+}
+
+.loading {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 200;
+}
+
+.loading .loading-particle:nth-last-child(1) {
+  -webkit-animation: loadingC 0.6s 0.1s linear infinite;
+          animation: loadingC 0.6s 0.1s linear infinite;
+}
+
+.loading .loading-particle:nth-last-child(2) {
+  -webkit-animation: loadingC 0.6s 0.2s linear infinite;
+          animation: loadingC 0.6s 0.2s linear infinite;
+}
+
+.loading .loading-particle:nth-last-child(3) {
+  -webkit-animation: loadingC 0.6s 0.3s linear infinite;
+          animation: loadingC 0.6s 0.3s linear infinite;
+}
+
+@-webkit-keyframes loadingC {
+  0% {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+  50% {
+    -webkit-transform: translate(0, 15px);
+            transform: translate(0, 15px);
+  }
+  100% {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+}
+
+@keyframes loadingC {
+  0% {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+  50% {
+    -webkit-transform: translate(0, 15px);
+            transform: translate(0, 15px);
+  }
+  100% {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+}
+
 .Login {
   height: 100vh;
   display: -webkit-box;
@@ -1210,7 +1271,7 @@ button {
   margin-bottom: 5px;
 }
 
-.Signin {
+.Signup {
   height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1227,7 +1288,7 @@ button {
           flex-direction: column;
 }
 
-.Signin .form {
+.Signup .form {
   padding: 40px 20px 40px 20px;
   margin-top: 40px;
   background-color: white;
@@ -1247,14 +1308,14 @@ button {
           justify-content: space-between;
 }
 
-.Signin .form p {
+.Signup .form p {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
   font-size: 1.5em;
 }
 
-.Signin .form input {
+.Signup .form input {
   border-radius: 10px;
   border: 1px solid #ddd;
   height: 35px;
@@ -1263,18 +1324,18 @@ button {
   width: 100%;
 }
 
-.Signin .form input:not(:last-child) {
+.Signup .form input:not(:last-child) {
   margin-bottom: 20px;
 }
 
-.Signin .form .signin-link {
+.Signup .form .signup-link {
   color: #36bcf1;
   text-decoration: underline;
   font-size: 1em;
   cursor: pointer;
 }
 
-.Signin .form button {
+.Signup .form button {
   background-color: #00ADB5;
   border-radius: 10px;
   color: white;

@@ -1,7 +1,7 @@
 import React,{Component} from 'react'
 import validator from 'email-validator'
 
-export default class Signin extends Component{
+export default class Signup extends Component{
     constructor(){
         super()
         this.state = {
@@ -50,7 +50,7 @@ export default class Signin extends Component{
     }
     render(){
         return(
-            <div className="Signin">
+            <div className="Signup">
                 <div className="form">
                     <p>Registrarte</p>
                     <div>
@@ -62,7 +62,7 @@ export default class Signin extends Component{
                         <input onChange={event=>this.setState({securityCode: event.target.value})} placeholder="Código de seguridad" type="password"></input>
                     </div> 
                     <button onClick={this.onSubmit}>Subir</button>
-                    <p onClick={()=>this.props.onChangeRoute("login")} className="signin-link">Iniciar Sesión</p>
+                    <p onClick={()=>this.props.onChangeRoute("login")} className="signup-link">Iniciar Sesión</p>
                 </div>
             </div>
         )

@@ -39,14 +39,11 @@ export default class Calendar extends React.Component{
         this.loadEvents()
         return(
             <div className="calendar">
+                <div onClick={()=>this.props.toggleDarkBg(false,0)} className="quit"><div className="right"></div><div className="left"></div></div>
                 <FullCalendar
                     height="100vh"
                     locale= "esLocale"
-                    headerToolbar={{
-                        start: 'prev',
-                        center: 'title',
-                        end: 'next'
-                    }}
+ 
                     backgroundColor='white'
                     plugins={[ dayGridPlugin ]}
                     initialView="dayGridMonth"

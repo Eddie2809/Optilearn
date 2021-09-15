@@ -1,6 +1,6 @@
 import React,{Component} from 'react'
 import Login from './containers/Login'
-import Signin from './containers/Signin'
+import Signup from './containers/Signup'
 import NewSessionAndTimerContainer from './containers/NewSessionAndTimerContainer'
 import UpcomingReviews from './containers/UpcomingReviews/UpcomingReviews'
 import Tips from './containers/Tips'
@@ -15,6 +15,7 @@ import ReferencesPopup from './popups/ReferencesPopup'
 import DeleteCompletedTopics from './popups/DeleteCompletedTopics'
 import Calendar from './components/Calendar'
 import OpenCalendar from './components/OpenCalendar'
+import Loading from './popups/Loading'
 import './styles/style.css'
 
 const tips = [
@@ -57,6 +58,7 @@ export default class App extends Component {
   }
 
   newCustomizedReview = (name,days) => {
+    this.toggleDarkBg(true,10)
     fetch('https://tranquil-meadow-47562.herokuapp.com/new-customized-review', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
@@ -69,6 +71,7 @@ export default class App extends Component {
     .then(response=>response.json())
     .then(res=>{
       this.getUserData(this.state.user)
+      this.toggleDarkBg(false,0)
     })
   }
 
@@ -118,6 +121,7 @@ export default class App extends Component {
   }
 
   newTopic = (topicName,references,date,reviewArray) => {
+    this.toggleDarkBg(true,10)
     fetch('https://tranquil-meadow-47562.herokuapp.com/new-topic', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
@@ -133,6 +137,7 @@ export default class App extends Component {
     .then(res => {
         this.getUserData(this.state.user)
         this.getUserData(this.state.user)
+        this.toggleDarkBg(false,0)
     })
   }
 
@@ -205,8 +210,13 @@ export default class App extends Component {
             6=delete topic
             7=references
             8=delete completed topics
-            9=calendar*/
+            9=calendar
+            10=loading*/
   toggleDarkBg = (toggle,selector,id) => {
+    this.setState({
+      popup: 0,
+      darkBg: false
+    })
     if(selector===3){
       this.setState({
         reviewIndexForReschedule: id
@@ -253,7 +263,6 @@ export default class App extends Component {
     })
     .then(response=>response.json())
     .then(response=>{
-      console.log(response)
         this.getUserData(this.state.user)
     })
   }
@@ -288,8 +297,6 @@ export default class App extends Component {
     let missed = []
     for(let i = 0; i<reviews.length;i++){
       time = new Date((reviews[i].review_date).slice(0,10)+'T00:00:00')
-      console.log(reviews[i].review_date)
-      console.log(time)
       if(time.getTime()<today.getTime()&&!reviews[i].done){
         missed.push({
           date: time.getTime(),
@@ -380,7 +387,7 @@ export default class App extends Component {
       <div className="App">
           {this.state.darkBg?
           <div>
-            <div onClick={()=>this.setState({darkBg: false,popup: 0})} className="dark-background"></div>
+            <div className="dark-background"></div>
             {this.state.popup===1?
               <EditTopic editTopic={this.editTopic} toggleDarkBg={this.toggleDarkBg} reviews={this.state.reviews} topics={this.state.topics} topicId={this.state.topicIdForEdit}/>:
               this.state.popup===2?
@@ -398,7 +405,9 @@ export default class App extends Component {
               this.state.popup===8?
               <DeleteCompletedTopics topics={this.state.topics} toggleDarkBg={this.toggleDarkBg} deleteTopic={this.deleteTopic}/>:
               this.state.popup===9?
-              <Calendar topics={this.state.topics} reviews={this.state.reviews}/>:
+              <Calendar toggleDarkBg={this.toggleDarkBg} topics={this.state.topics} reviews={this.state.reviews}/>:
+              this.state.popup===10?
+              <Loading/>:
               ''
             }
           </div>
@@ -416,9 +425,9 @@ export default class App extends Component {
               </div>
             </div>
             :this.state.route=="login"?
-            <Login getUserData={this.getUserData} onChangeRoute={this.onChangeRoute}/>
+            <Login toggleDarkBg={this.toggleDarkBg} getUserData={this.getUserData} onChangeRoute={this.onChangeRoute}/>
             :
-            <Signin onChangeRoute={this.onChangeRoute}/>
+            <Signup onChangeRoute={this.onChangeRoute}/>
           }
           
       </div>

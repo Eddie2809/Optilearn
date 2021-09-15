@@ -5,11 +5,12 @@ export default class Login extends Component{
     constructor(){
         super()
         this.state = {
-            email: "",
-            password: ""
+            email: "eddiealejandrovargas@gmail.com",
+            password: "reborn"
         }
     }
     onSubmit = () => {
+        this.props.toggleDarkBg(true,10)
         fetch('https://tranquil-meadow-47562.herokuapp.com/login', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
@@ -22,10 +23,12 @@ export default class Login extends Component{
         .then(user=>{
             if(user=="Authentication failed"){
                 alert("Credenciales no válidas")
+                this.props.toggleDarkBg(false,0)
             }
             else{
                 this.props.getUserData(user)
                 this.props.onChangeRoute('home')
+                this.props.toggleDarkBg(false,0)
             }
         })
     }
