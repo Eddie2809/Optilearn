@@ -15,22 +15,22 @@ export default class Signup extends Component{
     }
     onSubmit = () => {
         if(this.state.securityCode!="moreletii2021"){
-            alert("No tienes permiso para registrarte")
+            alert("Please, type the security code to sign up")
             return
         }
         if(!validator.validate(this.state.email)){
-            alert("Correo no válido")
+            alert("Invalid email")
             return
         }
         if(this.state.passwordVerification!=this.state.password){
-            alert("Las contraseñas no coinciden")
+            alert("Passwords don't match")
             return
         }
         if(!this.state.name||!this.state.lastname||!this.state.email||!this.state.password||!this.state.passwordVerification){
-            alert("Por favor rellena todos los campos")
+            alert("Please, fill in all fields.")
             return
         }
-        
+        this.props.toggleOnLS()
         fetch('https://tranquil-meadow-47562.herokuapp.com/signin', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
@@ -46,23 +46,24 @@ export default class Signup extends Component{
             if(user != "Authentication failed"){
                 this.props.onChangeRoute('login')
             }
+            this.props.toggleOffLS()
         })   
     }
     render(){
         return(
             <div className="Signup">
                 <div className="form">
-                    <p>Registrarte</p>
+                    <p>Register</p>
                     <div>
-                        <input onChange={event=>this.setState({name: event.target.value})} placeholder="Nombre(s)" type="text"></input>
-                        <input onChange={event=>this.setState({lastname: event.target.value})} placeholder="Apellido(s)" type="text"></input>
-                        <input onChange={event=>this.setState({email: event.target.value})} placeholder="Correo" type="email"></input>
-                        <input onChange={event=>this.setState({password: event.target.value})} placeholder="Contraseña" type="password"></input>
-                        <input onChange={event=>this.setState({passwordVerification: event.target.value})} placeholder="Repite tu contraseña" type="password"></input>
-                        <input onChange={event=>this.setState({securityCode: event.target.value})} placeholder="Código de seguridad" type="password"></input>
+                        <input onChange={event=>this.setState({name: event.target.value})} placeholder="Name" type="text"></input>
+                        <input onChange={event=>this.setState({lastname: event.target.value})} placeholder="Lastname" type="text"></input>
+                        <input onChange={event=>this.setState({email: event.target.value})} placeholder="Email" type="email"></input>
+                        <input onChange={event=>this.setState({password: event.target.value})} placeholder="Password" type="password"></input>
+                        <input onChange={event=>this.setState({passwordVerification: event.target.value})} placeholder="Repeat your password" type="password"></input>
+                        <input onChange={event=>this.setState({securityCode: event.target.value})} placeholder="Security code" type="password"></input>
                     </div> 
-                    <button onClick={this.onSubmit}>Subir</button>
-                    <p onClick={()=>this.props.onChangeRoute("login")} className="signup-link">Iniciar Sesión</p>
+                    <button onClick={this.onSubmit}>Sign up</button>
+                    <p onClick={()=>this.props.onChangeRoute("login")} className="signup-link">Sign in</p>
                 </div>
             </div>
         )

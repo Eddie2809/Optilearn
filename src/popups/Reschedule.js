@@ -27,7 +27,7 @@ export default class Reschedule extends Component{
         let today = new Date()
         let days = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]
         let daysElements = days.map((d,i)=>{
-            if(d==today.getDate()) return <option selected value={d<10? "0"+d:d}>{d<10? "0"+d:d}</option>
+            if(d === today.getDate()) return <option selected value={d<10? "0"+d:d}>{d<10? "0"+d:d}</option>
             else return <option value={d<10? "0"+d:d}>{d<10? "0"+d:d}</option>
         })
         return <select onChange={event => this.setState({day: event.target.value})} name="day" id="day">{daysElements}</select>
@@ -38,7 +38,7 @@ export default class Reschedule extends Component{
         let months = [['Jan','Enero'],['Feb','Febrero'],['Mar','Marzo'],['Apr','Abril'],['May','Mayo'],['Jun','Junio'],['Jul','Julio'],['Aug','Agosto'],['Sep','Septiembre'],['Oct','Octubre'],['Nov','Noviembre'],['Dec','Diciembre']]
     
         let monthsElements = months.map((m,i)=>{
-            if(i==today.getMonth()) return <option selected value={m[0]}>{m[1]}</option>
+            if(i === today.getMonth()) return <option selected value={m[0]}>{m[1]}</option>
             else return <option value={m[0]}>{m[1]}</option>
         })
 
@@ -56,7 +56,7 @@ export default class Reschedule extends Component{
         }while(firstYear<=today.getFullYear())
 
         let yearsElements = years.map((y,i)=>{
-            if(y==today.getFullYear()) return <option selected value={y}>{y}</option>
+            if(y === today.getFullYear()) return <option selected value={y}>{y}</option>
             else return <option value={y}>{y}</option>
         })
 
@@ -65,8 +65,7 @@ export default class Reschedule extends Component{
     }
 
     render(){
-        let today = new Date()
-        today = today.getMonth()
+        
         return(
             <div className="Reschedule pop-up">
                 <div onClick={()=>this.props.toggleDarkBg(false,0)} className="quit"><div className="right"></div><div className="left"></div></div>

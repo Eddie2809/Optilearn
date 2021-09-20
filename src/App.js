@@ -57,8 +57,16 @@ export default class App extends Component {
     }
   }
 
-  newCustomizedReview = (name,days) => {
+  toggleOnLS = () => {
     this.toggleDarkBg(true,10)
+  }
+  toggleOffLS = () => {
+    this.toggleDarkBg(false,0)
+  }
+
+
+  newCustomizedReview = (name,days) => {
+    this.toggleOnLS()
     fetch('https://tranquil-meadow-47562.herokuapp.com/new-customized-review', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
@@ -71,11 +79,16 @@ export default class App extends Component {
     .then(response=>response.json())
     .then(res=>{
       this.getUserData(this.state.user)
-      this.toggleDarkBg(false,0)
+      this.toggleOffLS()
+    })
+    .catch(e=>{
+      alert("An error has occurred")
+      this.toggleOffLS()
     })
   }
 
   editTopic = (newTopicName, newReferences,topicId) => {
+    this.toggleOnLS()
     fetch('https://tranquil-meadow-47562.herokuapp.com/edit-topic', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
@@ -89,6 +102,7 @@ export default class App extends Component {
     .then(response=>response.json())
     .then(res => {
       this.getUserData(this.state.user)
+      this.toggleOffLS()
     })
   }
 
@@ -121,7 +135,7 @@ export default class App extends Component {
   }
 
   newTopic = (topicName,references,date,reviewArray) => {
-    this.toggleDarkBg(true,10)
+    this.toggleOnLS()
     fetch('https://tranquil-meadow-47562.herokuapp.com/new-topic', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
@@ -137,11 +151,12 @@ export default class App extends Component {
     .then(res => {
         this.getUserData(this.state.user)
         this.getUserData(this.state.user)
-        this.toggleDarkBg(false,0)
+        this.toggleOffLS()
     })
   }
 
   deleteTopic = (topicId) => {
+    this.toggleOnLS()
     fetch('https://tranquil-meadow-47562.herokuapp.com/delete-topic', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
@@ -152,11 +167,13 @@ export default class App extends Component {
     })
     .then(response=>response.json())
     .then(response=>{
+      this.toggleOffLS()
       this.getUserData(this.state.user)
     })
   }
 
   deleteMissed = () => {
+    this.toggleOnLS()
     fetch('https://tranquil-meadow-47562.herokuapp.com/delete-missed', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
@@ -166,11 +183,13 @@ export default class App extends Component {
     })
     .then(response=>response.json())
     .then(response=>{
+      this.toggleOffLS()
       this.getUserData(this.state.user)
     })
   }
 
   deleteHistory = () => {
+    this.toggleOnLS()
     fetch('https://tranquil-meadow-47562.herokuapp.com/delete-history', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
@@ -180,6 +199,7 @@ export default class App extends Component {
     })
     .then(response=>response.json())
     .then(response =>{
+      this.toggleOffLS()
       this.getUserData(this.state.user)
     })
 
@@ -187,6 +207,7 @@ export default class App extends Component {
 
   //selector: 1=Edit, 2=Missed
   reschedule = (reviewId,date,selector) => {
+    this.toggleOnLS()
     fetch('https://tranquil-meadow-47562.herokuapp.com/reschedule', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
@@ -197,6 +218,7 @@ export default class App extends Component {
     })
     .then(response=>response.json())
     .then(response=>{
+      this.toggleOffLS()
       this.getUserData(this.state.user)
     })
   }
@@ -234,6 +256,7 @@ export default class App extends Component {
   }
 
   undoReview = (reviewId,topicId,numberOfCompletedReviews,numberOfReviews) => {
+    this.toggleOnLS()
     fetch('https://tranquil-meadow-47562.herokuapp.com/undo-review', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
@@ -246,11 +269,13 @@ export default class App extends Component {
     })
     .then(response=>response.json())
     .then(response=>{
+      this.toggleOffLS()
       this.getUserData(this.state.user)
     })
   }
 
   doReview = (reviewId,topicId,numberOfCompletedReviews,numberOfReviews) => {
+    this.toggleOnLS()
     fetch('https://tranquil-meadow-47562.herokuapp.com/do-review', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
@@ -263,6 +288,7 @@ export default class App extends Component {
     })
     .then(response=>response.json())
     .then(response=>{
+      this.toggleOffLS()
         this.getUserData(this.state.user)
     })
   }
@@ -427,7 +453,7 @@ export default class App extends Component {
             :this.state.route=="login"?
             <Login toggleDarkBg={this.toggleDarkBg} getUserData={this.getUserData} onChangeRoute={this.onChangeRoute}/>
             :
-            <Signup onChangeRoute={this.onChangeRoute}/>
+            <Signup onChangeRoute={this.onChangeRoute} toggleOffLS={this.toggleOffLS} toggleOnLS={this.toggleOnLS}/>
           }
           
       </div>

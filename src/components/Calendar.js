@@ -20,7 +20,7 @@ export default class Calendar extends React.Component{
                 overlap: 'true'
             })
         }
-
+            
         for(let i = 0; i < this.props.reviews.length; i++){
             //date = new Date(this.props.reviews[i].review_date)
             date = new Date((this.props.reviews[i].review_date).slice(0,10)+'T00:00:00')

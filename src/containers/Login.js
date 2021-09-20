@@ -5,8 +5,8 @@ export default class Login extends Component{
     constructor(){
         super()
         this.state = {
-            email: "eddiealejandrovargas@gmail.com",
-            password: "reborn"
+            email: "",
+            password: ""
         }
     }
     onSubmit = () => {

@@ -1,4 +1,4 @@
-
+/*
 Languages = {
     spanish: {
         login: 'Ingresar',
@@ -50,3 +50,4 @@ Languages = {
         signup: 'Signup'
     }
 }
+*/
