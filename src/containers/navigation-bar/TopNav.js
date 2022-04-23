@@ -16,9 +16,8 @@ export default class TopNav extends Component{
         }
     }
     openTab = (tab) => {
-        this.setState({
-            openedTab: tab
-        })
+        if(this.state.openedTab !== 'none') this.setState({openedTab: 'none'})
+        else this.setState({openedTab: tab})
     }
     
     render(){

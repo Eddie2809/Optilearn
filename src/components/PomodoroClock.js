@@ -12,7 +12,7 @@ export default class PomodoroClock extends Component{
         switch(props.timerState){
             case 1: this.clockStyle+="runTimer"; break;
             case 2: this.clockStyle+="pause"; break;
-            case 3: this.clockStyle = "clock"; break;
+            default: this.clockStyle = "clock"; break;
         }
     }
 

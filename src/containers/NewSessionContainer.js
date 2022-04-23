@@ -18,7 +18,7 @@ export default class NewSessionContainer extends Component{
         let today = new Date()
         let days = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]
         let daysElements = days.map((d,i)=>{
-            if(d==today.getDate()) return <option selected value={d<10? "0"+d:d}>{d<10? "0"+d:d}</option>
+            if(d === today.getDate()) return <option selected value={d<10? "0"+d:d}>{d<10? "0"+d:d}</option>
             else return <option value={d<10? "0"+d:d}>{d<10? "0"+d:d}</option>
         })
         return <select onChange={(event)=>this.setState({day: event.target.value})} name="day" id="day">{daysElements}</select>
@@ -29,7 +29,7 @@ export default class NewSessionContainer extends Component{
         let today = new Date()
     
         let monthsElements = months.map((m,i)=>{
-            if(i==today.getMonth()) return <option selected value={m[0]}>{m[1]}</option>
+            if(i === today.getMonth()) return <option selected value={m[0]}>{m[1]}</option>
             else return <option value={m[0]}>{m[1]}</option>
         })
 
@@ -47,7 +47,7 @@ export default class NewSessionContainer extends Component{
         }while(firstYear<=today.getFullYear())
 
         let yearsElements = years.map((y,i)=>{
-            if(y==today.getFullYear()) return <option selected value={y}>{y}</option>
+            if(y === today.getFullYear()) return <option selected value={y}>{y}</option>
             else return <option value={y}>{y}</option>
         })
 
@@ -59,18 +59,18 @@ export default class NewSessionContainer extends Component{
 
         let date = new Date(this.state.month+" "+this.state.day+" "+this.state.year)
 
-        if(this.state.topicName==''){
+        if(this.state.topicName === ''){
             alert("Please input the topic name")
             return;
         }
 
         let reviewsArray = []
-        if(this.state.reviews==-1){
+        if(this.state.reviews === -1){
             reviewsArray = [1,7,30,60,90]
         }
         else if(this.state.reviews>=0){
             for(let i = 0; i < this.props.userCustomizedReviews.length; i++){
-                if(this.state.reviews==this.props.userCustomizedReviews[i].id){
+                if(this.state.reviews === this.props.userCustomizedReviews[i].id){
                     reviewsArray=this.props.userCustomizedReviews[i].days
                     break
                 }

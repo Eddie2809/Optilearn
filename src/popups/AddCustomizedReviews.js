@@ -21,7 +21,7 @@ export default class AddCustomizedReviews extends Component{
         let reviews = []
         let reviewInputElements = document.querySelectorAll("#reviewDay")
 
-        if(this.state.name == ""){
+        if(this.state.name === ""){
             alert("Por favor ingresa un nombre")
             return
         }
@@ -35,7 +35,7 @@ export default class AddCustomizedReviews extends Component{
         }
         reviews.sort()
         for(let i = 0; i < reviews.length-1; i++){
-            if(reviews[i]==reviews[i+1]||reviews[i]<0||reviews[i+1]<0||reviews[i]==""||reviews[i+1]==""){
+            if(reviews[i] === reviews[i+1]||reviews[i]<0||reviews[i+1]<0||reviews[i] === ""||reviews[i+1] === ""){
                 alert("Entrada inválida: Por favor asegurate que los números sean únicos, positivos y en orden ascendente")
                 return
             }

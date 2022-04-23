@@ -25,7 +25,7 @@
             let topicReviews = []
 
             for(let i = 0; i < this.props.reviews.length; i++){
-                if(this.props.reviews[i].topic_id == this.props.topicId){
+                if(this.props.reviews[i].topic_id === this.props.topicId){
                     topicReviews.push(this.props.reviews[i])
                 }
             }
@@ -56,7 +56,7 @@
         }
         componentDidMount(){
             for(let i = 0; i < this.props.topics.length; i++){
-                if(this.props.topics[i].id==this.props.topicId){
+                if(this.props.topics[i].id === this.props.topicId){
                     this.setState({
                         topic: this.props.topics[i],
                         topicName: this.props.topics[i].name,

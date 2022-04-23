@@ -2,9 +2,7 @@ import React,{Component} from 'react'
 
 export default class Leftnav extends Component{
     changeTabState = (tab) => {
-        if(this.props.openedTab=='none'){
-            this.props.openTab(tab)
-        }
+        this.props.openTab(tab)
     }
     render(){
         return(

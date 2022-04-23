@@ -1,6 +1,5 @@
 import React,{Component} from 'react'
 import TopicItem from './TopicItem'
-import PropTypes from 'prop-types'
 
 export default class MyTopics extends Component{
     constructor(props) {

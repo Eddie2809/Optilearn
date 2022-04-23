@@ -1,6 +1,5 @@
 import React,{Component} from 'react'
 import MissedReview from './MissedReview'
-import PropTypes from 'prop-types'
 
 export default class Missed extends Component{
     constructor(props) {

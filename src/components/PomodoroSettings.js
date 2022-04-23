@@ -1,9 +1,6 @@
 import React,{Component} from 'react'
 
 export default class PomodoroSettings extends Component{
-    constructor(props){
-        super(props);
-    }
     play = () =>{
         this.props.setTimerState(1);
     }

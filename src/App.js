@@ -31,12 +31,13 @@ const tips = [
   "Si tienes muchos repasos acumulados para un día los puedes reagendar la pestaña \"Mis temas\""
 ]
 const rndTip = Math.round(Math.random()*(tips.length-1))
+const apiURL = 'https://tranquil-meadow-47562.herokuapp.com/'
 
 export default class App extends Component {
   constructor(){
     super();
     this.state = {
-      route: 'login',
+      route: 'none',
       darkBg: false,
       isLoggedIn: false,
       popup: 0,
@@ -57,6 +58,11 @@ export default class App extends Component {
     }
   }
 
+  componentDidMount(){
+    this.toggleDarkBg(true,10)
+    this.checkCookies()
+  }
+
   toggleOnLS = () => {
     this.toggleDarkBg(true,10)
   }
@@ -64,6 +70,54 @@ export default class App extends Component {
     this.toggleDarkBg(false,0)
   }
 
+  fetchData = async (route,body) => {
+    await fetch(apiURL + route,{
+      method: 'post',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(body)
+    })
+  }
+
+  checkCookies = () => {
+    let cookies = document.cookie
+    let SID
+
+    if(cookies !== ''){
+      let cookieArray = document.cookie.split(';')
+
+      for(let i = 0; i < cookieArray.length; i++){
+        let cookie = cookieArray[i]
+
+        while(cookie.charAt(0) === ' '){
+          cookie = cookie.substring(1)
+        }
+        if(cookie.indexOf('SID=') === 0){
+          SID = cookie.substring(4)
+        }
+      }
+
+      fetch('https://tranquil-meadow-47562.herokuapp.com/restore-session', {
+        method: 'post',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          SID: SID
+        })
+      })
+      .then(res => res.json())
+      .then(user => {
+        user = user[0]
+        if(user === 'Something went wrong'){
+          this.onChangeRoute('login')
+          this.toggleDarkBg(false,0)
+          return
+        }
+
+        this.getUserData(user) 
+        this.onChangeRoute('home')
+        this.toggleDarkBg(false,0)
+      })
+    }
+  }
 
   newCustomizedReview = (name,days) => {
     this.toggleOnLS()
@@ -107,6 +161,7 @@ export default class App extends Component {
   }
 
   logOut = () => {
+    document.cookie = "expires=" + new Date(0).toUTCString()
     this.setState({
       route: 'login',
       darkBg: false,
@@ -244,7 +299,7 @@ export default class App extends Component {
         reviewIndexForReschedule: id
       })
     }
-    else if(selector==1||selector==6||selector==7){
+    else if(selector === 1||selector === 6|| selector === 7){
       this.setState({
         topicIdForEdit: id
       })
@@ -430,8 +485,6 @@ export default class App extends Component {
               <ReferencesPopup topics={this.state.topics} topicId={this.state.topicIdForEdit} toggleDarkBg={this.toggleDarkBg}/>:
               this.state.popup===8?
               <DeleteCompletedTopics topics={this.state.topics} toggleDarkBg={this.toggleDarkBg} deleteTopic={this.deleteTopic}/>:
-              this.state.popup===9?
-              <Calendar toggleDarkBg={this.toggleDarkBg} topics={this.state.topics} reviews={this.state.reviews}/>:
               this.state.popup===10?
               <Loading/>:
               ''
@@ -442,6 +495,7 @@ export default class App extends Component {
             <div className="body">
               <TopNav logOut={this.logOut} doReview={this.doReview} toggleDarkBg={this.toggleDarkBg} history={this.state.history} missed={this.state.missed} topics={this.state.topics} undoReview={this.undoReview}/>
               <OpenCalendar toggleDarkBg={this.toggleDarkBg}/>
+              <Calendar toggleDarkBg={this.toggleDarkBg} topics={this.state.topics} reviews={this.state.reviews}/>
               <div className="body-content">
                 <UpcomingReviews toggleDarkBg={this.toggleDarkBg} doReview={this.doReview} upcomingReviews={this.state.upcomingReviews}/>
                 <div className="hide-for-mobile">
@@ -450,10 +504,11 @@ export default class App extends Component {
                 </div>
               </div>
             </div>
-            :this.state.route=="login"?
-            <Login toggleDarkBg={this.toggleDarkBg} getUserData={this.getUserData} onChangeRoute={this.onChangeRoute}/>
-            :
+            :this.state.route === "login"?
+            <Login fetchData={this.fetchData} toggleDarkBg={this.toggleDarkBg} getUserData={this.getUserData} onChangeRoute={this.onChangeRoute}/>
+            :this.state.route === 'signup'?
             <Signup onChangeRoute={this.onChangeRoute} toggleOffLS={this.toggleOffLS} toggleOnLS={this.toggleOnLS}/>
+            :<div></div>
           }
           
       </div>

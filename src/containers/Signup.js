@@ -14,7 +14,7 @@ export default class Signup extends Component{
         }
     }
     onSubmit = () => {
-        if(this.state.securityCode!="moreletii2021"){
+        if(this.state.securityCode !== "moreletii2021"){
             alert("Please, type the security code to sign up")
             return
         }
@@ -22,7 +22,7 @@ export default class Signup extends Component{
             alert("Invalid email")
             return
         }
-        if(this.state.passwordVerification!=this.state.password){
+        if(this.state.passwordVerification !== this.state.password){
             alert("Passwords don't match")
             return
         }
@@ -43,7 +43,7 @@ export default class Signup extends Component{
         })
         .then(response=>response.json())
         .then(user=>{
-            if(user != "Authentication failed"){
+            if(user !== "Authentication failed"){
                 this.props.onChangeRoute('login')
             }
             this.props.toggleOffLS()

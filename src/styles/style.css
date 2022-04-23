@@ -238,6 +238,10 @@ button {
   display: inline-block;
   font-size: 20px;
   color: #4E4E4E;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   cursor: pointer;
 }
 
@@ -337,7 +341,7 @@ button {
 .History .delete-history {
   height: 38px;
   width: 100%;
-  background-color: #F55353;
+  background-color: #ff3737;
   border-radius: 0 0 10px 10px;
   color: white;
   font-size: 20px;
@@ -386,7 +390,7 @@ button {
 .Missed .delete-missed-reviews {
   height: 38px;
   width: 100%;
-  background-color: #F55353;
+  background-color: #ff3737;
   border-radius: 0 0 10px 10px;
   color: white;
   font-size: 20px;
@@ -450,7 +454,7 @@ button {
 }
 
 .MyTopics .list .list-item .delete {
-  background-color: #F55353;
+  background-color: #ff3737;
   font-weight: 800;
 }
 
@@ -463,7 +467,7 @@ button {
 .MyTopics .delete-completed-topics {
   height: 38px;
   width: 100%;
-  background-color: #F55353;
+  background-color: #ff3737;
   border-radius: 0 0 10px 10px;
   color: white;
   font-size: 20px;
@@ -775,10 +779,10 @@ button {
 }
 
 .DeleteHistory .delete {
-  background-color: #F55353;
+  background-color: #ff3737;
   font-weight: 800;
   color: white;
-  border: 1px solid #F55353;
+  border: 1px solid #ff3737;
 }
 
 .DeleteHistory .warning {
@@ -823,10 +827,10 @@ button {
 }
 
 .DeleteMissed .delete {
-  background-color: #F55353;
+  background-color: #ff3737;
   font-weight: 800;
   color: white;
-  border: 1px solid #F55353;
+  border: 1px solid #ff3737;
 }
 
 .DeleteMissed .warning {
@@ -978,10 +982,10 @@ button {
 }
 
 .DeleteTopic .delete {
-  background-color: #F55353;
+  background-color: #ff3737;
   font-weight: 800;
   color: white;
-  border: 1px solid #F55353;
+  border: 1px solid #ff3737;
 }
 
 .DeleteTopic .warning {
@@ -1063,10 +1067,10 @@ button {
 }
 
 .DeleteCompletedTopics .delete {
-  background-color: #F55353;
+  background-color: #ff3737;
   font-weight: 800;
   color: white;
-  border: 1px solid #F55353;
+  border: 1px solid #ff3737;
 }
 
 .DeleteCompletedTopics .warning {
@@ -1349,36 +1353,149 @@ button {
 }
 
 .openCalendar {
-  position: absolute;
-  top: 50%;
-  height: 40px;
-  width: 140px;
-  background-color: #00ADB5;
+  position: fixed;
+  top: 45%;
+  width: 40px;
+  height: 140px;
+  background-color: #B51280;
   color: white;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  border-radius: 20px 20px 0 0;
+  border-radius: 20px 0 0 20px;
+  right: 0px;
+  z-index: 100;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: pointer;
+}
+
+.openCalendar p {
+  width: 130px;
   -webkit-transform: rotate(-90deg);
           transform: rotate(-90deg);
-  right: -50px;
-  cursor: pointer;
+  position: relative;
+  top: 60px;
+  right: 45px;
 }
 
 .calendar {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  position: absolute;
-  right: 0;
+  position: fixed;
+  right: -80vw;
+  top: 0;
+  height: 100vh;
   z-index: 100;
   background-color: white;
   width: 80vw;
+  overflow-x: auto;
+  padding: 30px;
+}
+
+.calendar .fc-prev-button, .calendar .fc-next-button, .calendar .fc-today-button {
+  background-color: #00ADB5;
+  border: 1px solid white;
+}
+
+.calendar .fc-prev-button:hover, .calendar .fc-next-button:hover, .calendar .fc-today-button:hover {
+  background-color: #009ea7;
+  border-color: #009ea7;
+}
+
+.moveOpenCalendarRight {
+  -webkit-animation: moveOpenCalendarRight 0.4s linear;
+          animation: moveOpenCalendarRight 0.4s linear;
+  right: 0;
+}
+
+.moveOpenCalendarLeft {
+  -webkit-animation: moveOpenCalendarLeft 0.4s linear;
+          animation: moveOpenCalendarLeft 0.4s linear;
+  right: 80vw;
+}
+
+.moveCalendarRight {
+  -webkit-animation: moveCalendarRight 0.4s linear;
+          animation: moveCalendarRight 0.4s linear;
+  right: -80vw;
+}
+
+.moveCalendarLeft {
+  -webkit-animation: moveCalendarLeft 0.4s linear;
+          animation: moveCalendarLeft 0.4s linear;
+  right: 0;
+}
+
+@-webkit-keyframes moveOpenCalendarRight {
+  0% {
+    right: 80vw;
+  }
+  100% {
+    right: 0;
+  }
+}
+
+@keyframes moveOpenCalendarRight {
+  0% {
+    right: 80vw;
+  }
+  100% {
+    right: 0;
+  }
+}
+
+@-webkit-keyframes moveOpenCalendarLeft {
+  0% {
+    right: 0;
+  }
+  100% {
+    right: 80vw;
+  }
+}
+
+@keyframes moveOpenCalendarLeft {
+  0% {
+    right: 0;
+  }
+  100% {
+    right: 80vw;
+  }
+}
+
+@-webkit-keyframes moveCalendarRight {
+  0% {
+    right: 0;
+  }
+  100% {
+    right: -80vw;
+  }
+}
+
+@keyframes moveCalendarRight {
+  0% {
+    right: 0;
+  }
+  100% {
+    right: -80vw;
+  }
+}
+
+@-webkit-keyframes moveCalendarLeft {
+  0% {
+    right: -80vw;
+  }
+  100% {
+    right: 0;
+  }
+}
+
+@keyframes moveCalendarLeft {
+  0% {
+    right: -80vw;
+  }
+  100% {
+    right: 0;
+  }
 }
 
 .SwitchBotton {

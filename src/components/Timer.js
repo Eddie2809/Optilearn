@@ -12,7 +12,7 @@ export default class Timer extends Component{
             case 1: this.startTimer();break;
             case 2: this.pauseTimer(); break;
             case 3: this.stopTimer(); break;
-            case 4: this.restartTimer(); break;
+            default: this.restartTimer(); break;
         }
     }
     componentDidMount(){

@@ -9,7 +9,7 @@ export default class ReferencesPopup extends Component{
     }
     componentDidMount(){
         for(let i = 0; i < this.props.topics.length; i++){
-            if(this.props.topics[i].id == this.props.topicId){
+            if(this.props.topics[i].id === this.props.topicId){
                 this.setState({
                     references: this.props.topics[i].topic_references
                 })

@@ -1,6 +1,5 @@
 import React,{Component} from 'react'
 import HistoryReview from './HistoryReview'
-import PropTypes from 'prop-types'
 
 //this.props: history[[getTime,id,topic name]]
 export default class History extends Component{

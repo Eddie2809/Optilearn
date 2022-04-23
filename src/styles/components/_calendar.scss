@@ -1,24 +1,101 @@
 .openCalendar{
-    position: absolute;
-    top: 50%;
-    height: 40px;
-    width: 140px;
-    background-color: $main-blue;
+    position: fixed;
+    top: 45%;
+    width: 40px;
+    height: 140px;
+    background-color:#B51280;
     color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 20px 20px 0 0;
-    transform: rotate(-90deg);
-    right: -50px;
+    border-radius: 20px 0 0 20px;
+    right: 0px;
+    z-index: 100;
+    user-select: none;
     cursor: pointer;
+
+    p{
+        width: 130px;
+        transform: rotate(-90deg);
+        position: relative;
+        top: 60px;
+        right: 45px;
+    }
+
 }
 
 .calendar{
     box-sizing: border-box;
-    position: absolute;
-    right: 0;
+    position: fixed;
+    right: -80vw;
+    top: 0;
+    height: 100vh;
     z-index: 100;
     background-color: white;
     width: 80vw;
+    overflow-x: auto;
+    padding: 30px;
+
+    .fc-prev-button,.fc-next-button,.fc-today-button{
+        background-color: $main-blue;
+        border: 1px solid white;
+
+        &:hover{
+            background-color: #009ea7;
+            border-color: #009ea7;
+        }
+    }
+}
+
+.moveOpenCalendarRight{
+    animation: moveOpenCalendarRight 0.4s linear;
+    right: 0;
+}
+
+.moveOpenCalendarLeft{
+    animation: moveOpenCalendarLeft 0.4s linear;
+    right: 80vw;
+}
+
+.moveCalendarRight{
+    animation: moveCalendarRight 0.4s linear;
+    right: -80vw;
+}
+
+.moveCalendarLeft{
+    animation: moveCalendarLeft 0.4s linear;
+    right: 0;
+}
+
+@keyframes moveOpenCalendarRight{
+    0%{
+        right: 80vw;
+    }
+    100%{
+        right: 0;
+    }
+}
+
+@keyframes moveOpenCalendarLeft{
+    0%{
+        right: 0;
+    }
+    100%{
+        right: 80vw; 
+    }
+}
+
+@keyframes moveCalendarRight{
+    0%{
+        right: 0;
+    }
+    100%{
+        right: -80vw;
+    }
+}
+
+@keyframes moveCalendarLeft{
+    0%{
+        right: -80vw;
+    }
+    100%{
+        right: 0;
+    }
 }

@@ -15,6 +15,7 @@
         display: inline-block;
         font-size: 20px;
         color: $letters;
+        user-select: none;
         cursor: pointer;
         &:not(:last-child){
             margin-right: 20px;
