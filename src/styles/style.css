@@ -62,7 +62,6 @@ button {
   height: 100vh;
   width: 100vw;
   z-index: 100;
-  background-color: rgba(0, 0, 0, 0.75);
 }
 
 .body-content {
@@ -137,6 +136,54 @@ button {
 
 .checkbox:hover {
   border: 1px solid #5151ff;
+}
+
+.darkBgAppear {
+  -webkit-animation: darkBgAppear 0.4s linear;
+          animation: darkBgAppear 0.4s linear;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.darkBgDisappear {
+  -webkit-animation: darkBgDisappear 0.4s linear;
+          animation: darkBgDisappear 0.4s linear;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+@-webkit-keyframes darkBgAppear {
+  0% {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  100% {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}
+
+@keyframes darkBgAppear {
+  0% {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  100% {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}
+
+@-webkit-keyframes dargBgDisappear {
+  0% {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  100% {
+    background-color: rgba(0, 0, 0, 0);
+  }
+}
+
+@keyframes dargBgDisappear {
+  0% {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  100% {
+    background-color: rgba(0, 0, 0, 0);
+  }
 }
 
 .NewSessionAndTimerContainer {
@@ -1390,6 +1437,54 @@ button {
   width: 80vw;
   overflow-x: auto;
   padding: 30px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 250px 1fr;
+      grid-template-columns: 250px 1fr;
+  -ms-grid-rows: 1fr;
+      grid-template-rows: 1fr;
+}
+
+.calendar .colors {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 20px;
+}
+
+.calendar .colors li {
+  list-style: none;
+  margin-bottom: 20px;
+}
+
+.calendar .colors li:before {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  right: 10px;
+  top: 5px;
+  border-radius: 50%;
+}
+
+.calendar .colors .green:before {
+  background-color: #4AC563;
+}
+
+.calendar .colors .blue:before {
+  background-color: #00ADB5;
+}
+
+.calendar .colors .yellow:before {
+  background-color: #EBF144;
+}
+
+.calendar .colors .red:before {
+  background-color: #ff3737;
 }
 
 .calendar .fc-prev-button, .calendar .fc-next-button, .calendar .fc-today-button {
