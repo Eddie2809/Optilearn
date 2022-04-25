@@ -5,25 +5,40 @@
     align-items: center;
     flex-direction: column;
     .form{
-        padding: 20px;
-        margin-top: 40px;
+        margin-top: 30px;
+        padding: 40px;
         background-color: white;
         border: 1px solid #ddd;
+        box-shadow: 5px 5px 10px #555;
         border-radius: 10px;
-        height: 305px;
+        height: 355px;
         width: 400px;
         display: flex;
         flex-direction: column;
         p{
-            align-self: center;
+            justify-self: center;
             font-size: 1.5em;
-            margin-bottom: 40px;
         }
+        .form-header{
+            display: flex;
+            align-items: center;
+            width: 100%;
+            justify-content: space-around;
+            margin-bottom: 20px;
+            select{
+                height: 24px;
+            }
+            p{
+                font-size: 1.5em;
+            }
+        }
+        
         .signin-link{
             color: rgb(54, 188, 241);
             text-decoration: underline;
             font-size: 1em;
-            margin-bottom: 20px;
+            justify-self: center;
+            margin: auto;
             cursor: pointer;
         }
         input{

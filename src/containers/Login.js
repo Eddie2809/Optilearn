@@ -1,6 +1,5 @@
 import React,{Component} from 'react'
 import Logo from '../img/logo.png'
-import Languages from '../Languages'
 
 export default class Login extends Component{
     constructor(){
@@ -52,22 +51,22 @@ export default class Login extends Component{
         })
     }
     onChangeLanguage = (lan) => {
-        switch(lan){
-            case 'es': this.props.changeLanguage(Languages.es,lan); break;
-            case 'en': this.props.changeLanguage(Languages.en,lan); break;
-            default: this.props.changeLanguage(Languages.en,lan); break;
-        }
+        document.cookie = "LOC=" + lan + ";"
+        this.props.changeLanguage(lan)
     }
     render(){
         return(
             <div className="Login">
                 <img src={Logo} alt="logo"></img>
                 <div className="form">
-                    <p>{this.props.p.login}</p>
-                    <select onChange={ (event) => this.onChangeLanguage(event.target.value)}>
-                        <option value="en">{this.props.p.langs.english}</option>
-                        <option value="es">{this.props.p.langs.spanish}</option>
-                    </select>
+                    <div className='form-header'>
+                        <p>{this.props.p.login}</p>
+                        <select value={this.props.getCookie('LOC') === ''? 'en':this.props.getCookie('LOC')} onChange={ (event) => this.onChangeLanguage(event.target.value)}>
+                            <option value="en">{this.props.p.langs.english}</option>
+                            <option value="es">{this.props.p.langs.spanish}</option>
+                        </select>
+                    </div>
+                    
                     <input onChange={event=>this.setState({email: event.target.value})} value = {this.state.email} placeholder={this.props.p.email} type="email"></input>
                     <input onChange={event=>this.setState({password: event.target.value})} value={this.state.password} placeholder={this.props.p.password} type="password"></input>
                     <button onClick={this.onSubmit}>{this.props.p.login}</button>

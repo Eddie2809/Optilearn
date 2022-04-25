@@ -53,8 +53,14 @@ export default class App extends Component {
     this.checkCookies()
   }
 
-  changeLanguage = (newLang,newLocale) => {
-    this.setState({lan: newLang,locale: newLocale})
+  changeLanguage = (locale) => {
+    let newLang
+    switch(locale){
+      case 'es': newLang = Languages.es; break;
+      default: newLang = Languages.en; break;
+    }
+
+    this.setState({lan: newLang,locale: locale})
   }
 
   toggleOnLS = () => {
@@ -72,24 +78,35 @@ export default class App extends Component {
     })
   }
 
+  getCookie = (name) => {
+    let cookieArray = document.cookie.split(';')
+    name = name + '=' 
+    let cookieValue = ''
+
+    for(let i = 0; i < cookieArray.length; i++){
+      let cookie = cookieArray[i]
+
+      while(cookie.charAt(0) === ' '){
+        cookie = cookie.substring(1)
+      }
+      if(cookie.indexOf(name) === 0){
+        cookieValue = cookie.substring(name.length)
+      }
+    }
+
+    return cookieValue
+
+  }
+
   checkCookies = () => {
     let cookies = document.cookie
     let SID
     let status
+    let locale = this.getCookie('LOC')
+    if(locale === '') locale = 'en';
 
     if(cookies !== ''){
-      let cookieArray = document.cookie.split(';')
-
-      for(let i = 0; i < cookieArray.length; i++){
-        let cookie = cookieArray[i]
-
-        while(cookie.charAt(0) === ' '){
-          cookie = cookie.substring(1)
-        }
-        if(cookie.indexOf('SID=') === 0){
-          SID = cookie.substring(4)
-        }
-      }
+      SID = this.getCookie('SID')
 
       fetch('https://tranquil-meadow-47562.herokuapp.com/restore-session', {
         method: 'post',
@@ -106,6 +123,7 @@ export default class App extends Component {
         else{
           user = user[0]
   
+          this.changeLanguage(locale)
           this.getUserData(user) 
           this.onChangeRoute('home')
         }
@@ -505,7 +523,7 @@ export default class App extends Component {
               </div>
             </div>
             :this.state.route === "login"?
-            <Login changeLanguage={this.changeLanguage} p={this.state.lan} fetchData={this.fetchData} toggleDarkBg={this.toggleDarkBg} getUserData={this.getUserData} onChangeRoute={this.onChangeRoute}/>
+            <Login getCookie={this.getCookie} changeLanguage={this.changeLanguage} p={this.state.lan} fetchData={this.fetchData} toggleDarkBg={this.toggleDarkBg} getUserData={this.getUserData} onChangeRoute={this.onChangeRoute}/>
             :this.state.route === 'signup'?
             <Signup p={this.state.lan} onChangeRoute={this.onChangeRoute} toggleOffLS={this.toggleOffLS} toggleOnLS={this.toggleOnLS}/>
             :<div></div>
