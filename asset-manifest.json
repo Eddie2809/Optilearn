@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.css": "/optilearn/static/css/main.5f23bec3.chunk.css",
-    "main.js": "/optilearn/static/js/main.e4cb0233.chunk.js",
-    "main.js.map": "/optilearn/static/js/main.e4cb0233.chunk.js.map",
-    "runtime-main.js": "/optilearn/static/js/runtime-main.70af34a6.js",
-    "runtime-main.js.map": "/optilearn/static/js/runtime-main.70af34a6.js.map",
+    "main.css": "/optilearn/static/css/main.85d975b1.chunk.css",
+    "main.js": "/optilearn/static/js/main.533446a0.chunk.js",
+    "main.js.map": "/optilearn/static/js/main.533446a0.chunk.js.map",
+    "runtime-main.js": "/optilearn/static/js/runtime-main.f43c7cfd.js",
+    "runtime-main.js.map": "/optilearn/static/js/runtime-main.f43c7cfd.js.map",
     "static/css/2.f0fce20c.chunk.css": "/optilearn/static/css/2.f0fce20c.chunk.css",
-    "static/js/2.f91589db.chunk.js": "/optilearn/static/js/2.f91589db.chunk.js",
-    "static/js/2.f91589db.chunk.js.map": "/optilearn/static/js/2.f91589db.chunk.js.map",
-    "static/js/3.e4296710.chunk.js": "/optilearn/static/js/3.e4296710.chunk.js",
-    "static/js/3.e4296710.chunk.js.map": "/optilearn/static/js/3.e4296710.chunk.js.map",
+    "static/js/2.663974e4.chunk.js": "/optilearn/static/js/2.663974e4.chunk.js",
+    "static/js/2.663974e4.chunk.js.map": "/optilearn/static/js/2.663974e4.chunk.js.map",
+    "static/js/3.8482ccd9.chunk.js": "/optilearn/static/js/3.8482ccd9.chunk.js",
+    "static/js/3.8482ccd9.chunk.js.map": "/optilearn/static/js/3.8482ccd9.chunk.js.map",
     "index.html": "/optilearn/index.html",
     "static/css/2.f0fce20c.chunk.css.map": "/optilearn/static/css/2.f0fce20c.chunk.css.map",
-    "static/css/main.5f23bec3.chunk.css.map": "/optilearn/static/css/main.5f23bec3.chunk.css.map",
-    "static/js/2.f91589db.chunk.js.LICENSE.txt": "/optilearn/static/js/2.f91589db.chunk.js.LICENSE.txt",
+    "static/css/main.85d975b1.chunk.css.map": "/optilearn/static/css/main.85d975b1.chunk.css.map",
+    "static/js/2.663974e4.chunk.js.LICENSE.txt": "/optilearn/static/js/2.663974e4.chunk.js.LICENSE.txt",
     "static/media/clock.85b82cc6.png": "/optilearn/static/media/clock.85b82cc6.png",
     "static/media/logo.e85d48e6.png": "/optilearn/static/media/logo.e85d48e6.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.70af34a6.js",
+    "static/js/runtime-main.f43c7cfd.js",
     "static/css/2.f0fce20c.chunk.css",
-    "static/js/2.f91589db.chunk.js",
-    "static/css/main.5f23bec3.chunk.css",
-    "static/js/main.e4cb0233.chunk.js"
+    "static/js/2.663974e4.chunk.js",
+    "static/css/main.85d975b1.chunk.css",
+    "static/js/main.533446a0.chunk.js"
   ]
 }
