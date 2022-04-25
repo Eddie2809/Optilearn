@@ -1,6 +1,5 @@
 import React,{Component} from 'react'
 
-let months = [['Jan','Enero'],['Feb','Febrero'],['Mar','Marzo'],['Apr','Abril'],['May','Mayo'],['Jun','Junio'],['Jul','Julio'],['Aug','Agosto'],['Sep','Septiembre'],['Oct','Octubre'],['Nov','Noviembre'],['Dec','Diciembre']]
 
 export default class NewSessionContainer extends Component{
     constructor(props){
@@ -12,6 +11,7 @@ export default class NewSessionContainer extends Component{
             day: new Date().getDate(),
             month: (new Date().getMonth())+1,
             year: new Date().getFullYear(),
+            months: [['Jan',this.props.p.january],['Feb',this.props.p.february],['Mar',this.props.p.march],['Apr',this.props.p.april],['May',this.props.p.may],['Jun',this.props.p.june],['Jul',this.props.p.july],['Aug',this.props.p.august],['Sep',this.props.p.september],['Oct',this.props.p.october],['Nov',this.props.p.november],['Dec',this.props.p.december]]
         }
     }
     generateDays = () => {
@@ -28,7 +28,7 @@ export default class NewSessionContainer extends Component{
         
         let today = new Date()
     
-        let monthsElements = months.map((m,i)=>{
+        let monthsElements = this.state.months.map((m,i)=>{
             if(i === today.getMonth()) return <option selected value={m[0]}>{m[1]}</option>
             else return <option value={m[0]}>{m[1]}</option>
         })
@@ -82,7 +82,7 @@ export default class NewSessionContainer extends Component{
         document.getElementById("topic-name").value = ""
         document.getElementById("references").value = ""
         document.getElementById("day").value = new Date().getDate()
-        document.getElementById("month").value = months[new Date().getMonth()][0]
+        document.getElementById("month").value = this.state.months[new Date().getMonth()][0]
         document.getElementById("year").value = new Date().getFullYear()
         document.getElementById("reviews").value = -1
 
@@ -98,8 +98,8 @@ export default class NewSessionContainer extends Component{
 
     generateReviews = () => {
         let options = [];
-        options.push(<option value="-1">Predeterminado</option>)
-        options.push(<option value="-2">Sin repaso</option>)
+        options.push(<option value="-1">{this.props.p.default}</option>)
+        options.push(<option value="-2">{this.props.p.noReviews}</option>)
 
         for(let i = 0; i<this.props.userCustomizedReviews.length; i++){
             options.push(<option value={this.props.userCustomizedReviews[i].id.toString()}>{this.props.userCustomizedReviews[i].name}</option>)
@@ -112,24 +112,24 @@ export default class NewSessionContainer extends Component{
             <div className={"NewSessionContainer " + (this.props.mode? "": "flipY")}>
                 <div className="form">
                     <div className="topic-date-review">
-                        <p>Tema</p>
+                        <p>{this.props.p.topic}</p>
                         <input maxLength="150" defaultValue={this.state.topicName} type="text" id="topic-name" onChange={event=>this.setState({topicName: event.target.value})}/>
-                        <p>Fecha</p>
+                        <p>{this.props.p.date}</p>
                         <div className="date">
                             {this.generateDays()}
                             {this.generateMonths()}
                             {this.generateYears()}
                         </div>
-                        <p>Repaso</p>
+                        <p>{this.props.p.review}</p>
                         <select name="" id="reviews" onChange={event=>this.setState({reviews: event.target.value})}>
                             {this.generateReviews()}
                         </select>  
                     </div>
                     <div className="references" onChange={event=>{this.setState({references: event.target.value})}}>
-                        <p>Referencias</p>
+                        <p>{this.props.p.references}</p>
                         <textarea maxLength="350" name="" id="references" cols="30" rows="10"></textarea>
                     </div>
-                    <button onClick={this.submitNewTopic}>Añadir</button>
+                    <button onClick={this.submitNewTopic}>{this.props.p.add}</button>
                 </div>
             </div>
         )

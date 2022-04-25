@@ -9,12 +9,12 @@ export default class DeleteMissed extends Component{
         return(
             <div className="DeleteMissed pop-up">
                 <div>
-                    <p>¿Seguro que quieres borrar tus sesiones perdidas?</p>
-                    <p className="warning">(Esto eliminará permanentemente los repasos que no hiciste y no los podrás hacer en el futuro)</p>
+                    <p>{this.props.p.areYouSureYouWantToDeleteYourMissedSessions}</p>
+                    <p className="warning">{this.props.p.deleteMissedSessionsWarningMessage}</p>
                 </div>
                 <div>
-                    <button onClick={()=>this.props.toggleDarkBg(false,0)} className="cancel">No, regresar</button>
-                    <button onClick={this.delete} className="delete">Sí, borrar</button>
+                    <button onClick={()=>this.props.toggleDarkBg(false,0)} className="cancel">{this.props.p.noGoBack}</button>
+                    <button onClick={this.delete} className="delete">{this.props.p.yesDelete}</button>
                 </div>
             </div>
         )

@@ -16,27 +16,17 @@ import DeleteCompletedTopics from './popups/DeleteCompletedTopics'
 import Calendar from './components/Calendar'
 import OpenCalendar from './components/OpenCalendar'
 import Loading from './popups/Loading'
+import Languages from './Languages'
 import './styles/style.css'
 
-const tips = [
-  "Puedes hacer repasos personalizados desde configuración",
-  "Nunca te rindas:)",
-  "En referencias puedes incluir tus referencias donde estudiaste o hacer anotaciones del tema",
-  "No hagas más de 3 sesiones nuevas a la semana para no acumular tantos repasos en un día",
-  "En el calendario puedes ver todos los repasos pendientes, en la sección \"Próximos repasos\" solo puedes ver los próximos 20 repasos",
-  "Si marcaste como completado un repaso por accidente puedes arreglarlo en la pestaña de historial",
-  "En la pestaña \"Mis temas\" puedes editar la fecha de los repasos y todo lo relacionado con un tema registrado",
-  "Nunca dejes de aprender",
-  "Puedes ver las referencias de un tema presionando el botón \"Editar\" en la pestaña de \"Mis temas\" o presionando el icono de libro en próximos repasos",
-  "Si tienes muchos repasos acumulados para un día los puedes reagendar la pestaña \"Mis temas\""
-]
-const rndTip = Math.round(Math.random()*(tips.length-1))
 const apiURL = 'https://tranquil-meadow-47562.herokuapp.com/'
 
 export default class App extends Component {
   constructor(){
     super();
     this.state = {
+      lan: Languages.en,
+      locale: 'en',
       route: 'none',
       darkBg: false,
       isLoggedIn: false,
@@ -63,6 +53,10 @@ export default class App extends Component {
     this.checkCookies()
   }
 
+  changeLanguage = (newLang,newLocale) => {
+    this.setState({lan: newLang,locale: newLocale})
+  }
+
   toggleOnLS = () => {
     this.toggleDarkBg(true,10)
   }
@@ -81,6 +75,7 @@ export default class App extends Component {
   checkCookies = () => {
     let cookies = document.cookie
     let SID
+    let status
 
     if(cookies !== ''){
       let cookieArray = document.cookie.split(';')
@@ -103,19 +98,24 @@ export default class App extends Component {
           SID: SID
         })
       })
-      .then(res => res.json())
+      .then(res => {status = res.status; return res.json()})
       .then(user => {
-        user = user[0]
-        if(user === 'Something went wrong'){
+        if(status === 400){
           this.onChangeRoute('login')
-          this.toggleDarkBg(false,0)
-          return
+        }
+        else{
+          user = user[0]
+  
+          this.getUserData(user) 
+          this.onChangeRoute('home')
         }
 
-        this.getUserData(user) 
-        this.onChangeRoute('home')
         this.toggleDarkBg(false,0)
       })
+    }
+    else{
+      this.setState({route: 'login'})
+      this.toggleDarkBg(false,0)
     }
   }
 
@@ -468,23 +468,23 @@ export default class App extends Component {
       <div className="App">
           {this.state.darkBg?
           <div>
-            <div className="dark-background"></div>
+            <div className="dark-background darkBgAppear"></div>
             {this.state.popup===1?
-              <EditTopic editTopic={this.editTopic} toggleDarkBg={this.toggleDarkBg} reviews={this.state.reviews} topics={this.state.topics} topicId={this.state.topicIdForEdit}/>:
+              <EditTopic p={this.state.lan} editTopic={this.editTopic} toggleDarkBg={this.toggleDarkBg} reviews={this.state.reviews} topics={this.state.topics} topicId={this.state.topicIdForEdit}/>:
               this.state.popup===2?
-              <DeleteHistory deleteHistory={this.deleteHistory} toggleDarkBg={this.toggleDarkBg}/>:
+              <DeleteHistory p={this.state.lan} deleteHistory={this.deleteHistory} toggleDarkBg={this.toggleDarkBg}/>:
               this.state.popup===3?
-              <Reschedule toggleDarkBg={this.toggleDarkBg} reschedule={this.reschedule} reviewId={this.state.reviewIndexForReschedule}/>:
+              <Reschedule p={this.state.lan} toggleDarkBg={this.toggleDarkBg} reschedule={this.reschedule} reviewId={this.state.reviewIndexForReschedule}/>:
               this.state.popup===4?
-              <DeleteMissed deleteMissed={this.deleteMissed} toggleDarkBg={this.toggleDarkBg}/>:
+              <DeleteMissed p={this.state.lan} deleteMissed={this.deleteMissed} toggleDarkBg={this.toggleDarkBg}/>:
               this.state.popup===5?
-              <AddCustomizedReviews newCustomizedReview={this.newCustomizedReview} toggleDarkBg={this.toggleDarkBg}/>:
+              <AddCustomizedReviews p={this.state.lan} newCustomizedReview={this.newCustomizedReview} toggleDarkBg={this.toggleDarkBg}/>:
               this.state.popup===6?
-              <DeleteTopic topicId={this.state.topicIdForEdit} toggleDarkBg={this.toggleDarkBg} deleteTopic = {this.deleteTopic}/>:
+              <DeleteTopic p={this.state.lan} topicId={this.state.topicIdForEdit} toggleDarkBg={this.toggleDarkBg} deleteTopic = {this.deleteTopic}/>:
               this.state.popup===7?
-              <ReferencesPopup topics={this.state.topics} topicId={this.state.topicIdForEdit} toggleDarkBg={this.toggleDarkBg}/>:
+              <ReferencesPopup p={this.state.lan} topics={this.state.topics} topicId={this.state.topicIdForEdit} toggleDarkBg={this.toggleDarkBg}/>:
               this.state.popup===8?
-              <DeleteCompletedTopics topics={this.state.topics} toggleDarkBg={this.toggleDarkBg} deleteTopic={this.deleteTopic}/>:
+              <DeleteCompletedTopics p={this.state.lan} topics={this.state.topics} toggleDarkBg={this.toggleDarkBg} deleteTopic={this.deleteTopic}/>:
               this.state.popup===10?
               <Loading/>:
               ''
@@ -493,21 +493,21 @@ export default class App extends Component {
           :''}
           {this.state.route === 'home'?
             <div className="body">
-              <TopNav logOut={this.logOut} doReview={this.doReview} toggleDarkBg={this.toggleDarkBg} history={this.state.history} missed={this.state.missed} topics={this.state.topics} undoReview={this.undoReview}/>
-              <OpenCalendar toggleDarkBg={this.toggleDarkBg}/>
-              <Calendar toggleDarkBg={this.toggleDarkBg} topics={this.state.topics} reviews={this.state.reviews}/>
+              <TopNav p={this.state.lan} logOut={this.logOut} doReview={this.doReview} toggleDarkBg={this.toggleDarkBg} history={this.state.history} missed={this.state.missed} topics={this.state.topics} undoReview={this.undoReview}/>
+              <OpenCalendar p={this.state.lan} toggleDarkBg={this.toggleDarkBg}/>
+              <Calendar p={this.state.lan} locale={this.state.locale} toggleDarkBg={this.toggleDarkBg} topics={this.state.topics} reviews={this.state.reviews}/>
               <div className="body-content">
-                <UpcomingReviews toggleDarkBg={this.toggleDarkBg} doReview={this.doReview} upcomingReviews={this.state.upcomingReviews}/>
+                <UpcomingReviews p={this.state.lan} toggleDarkBg={this.toggleDarkBg} doReview={this.doReview} upcomingReviews={this.state.upcomingReviews}/>
                 <div className="hide-for-mobile">
-                  <NewSessionAndTimerContainer userCustomizedReviews={this.state.userCustomizedReviews} newTopic={this.newTopic} toggleDarkBg={this.toggleDarkBg}/>
-                  <Tips tip={tips[rndTip]}/>
+                  <NewSessionAndTimerContainer p={this.state.lan} userCustomizedReviews={this.state.userCustomizedReviews} newTopic={this.newTopic} toggleDarkBg={this.toggleDarkBg}/>
+                  <Tips p={this.state.lan}/>
                 </div>
               </div>
             </div>
             :this.state.route === "login"?
-            <Login fetchData={this.fetchData} toggleDarkBg={this.toggleDarkBg} getUserData={this.getUserData} onChangeRoute={this.onChangeRoute}/>
+            <Login changeLanguage={this.changeLanguage} p={this.state.lan} fetchData={this.fetchData} toggleDarkBg={this.toggleDarkBg} getUserData={this.getUserData} onChangeRoute={this.onChangeRoute}/>
             :this.state.route === 'signup'?
-            <Signup onChangeRoute={this.onChangeRoute} toggleOffLS={this.toggleOffLS} toggleOnLS={this.toggleOnLS}/>
+            <Signup p={this.state.lan} onChangeRoute={this.onChangeRoute} toggleOffLS={this.toggleOffLS} toggleOnLS={this.toggleOnLS}/>
             :<div></div>
           }
           

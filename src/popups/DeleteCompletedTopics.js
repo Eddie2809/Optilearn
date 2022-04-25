@@ -14,12 +14,12 @@ export default class DeleteCompletedTopics extends Component{
         return(
             <div className="DeleteCompletedTopics pop-up">
                 <div>
-                    <p>¿Seguro que quieres los temas completados?</p>
-                    <p className="warning">(Esto eliminará permanentemente los temas los cuales todos sus repasos ya hayan sido completados)</p>
+                    <p>{this.props.p.areYouSureYouWantToDeleteYourCompletedTopics}</p>
+                    <p className="warning">{this.props.p.deleteCompletedTopicsWarning}</p>
                 </div>
                 <div>
-                    <button onClick={()=>this.props.toggleDarkBg(false,0)} className="cancel">No, regresar</button>
-                    <button onClick={this.deleteTopics} className="delete">Sí, borrar</button>
+                    <button onClick={()=>this.props.toggleDarkBg(false,0)} className="cancel">{this.props.p.noGoBack}</button>
+                    <button onClick={this.deleteTopics} className="delete">{this.props.p.yesDelete}</button>
                 </div>
             </div>
         )

@@ -5,7 +5,7 @@ import Timer from './Timer'
 export default class PomodoroClock extends Component{
     constructor(props){
         super(props);
-        this.text = "Concéntrate"
+        this.text = this.props.p.focus
         
         this.clockStyle = "clock "
 

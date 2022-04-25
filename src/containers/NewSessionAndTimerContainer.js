@@ -22,9 +22,9 @@ export default class TimerContainer extends Component{
     render(){
         return(
             <div className = "NewSessionAndTimerContainer">
-                <NewSessionAndTimerContainerTop shiftMode={this.shiftMode} mode={this.state.mode}/>
-                <PomodoroContainer mode={this.state.mode} setTimerState={this.setTimerState} timerState={this.state.timerState}/>
-                <NewSessionContainer userCustomizedReviews={this.props.userCustomizedReviews} newTopic={this.props.newTopic} toggleDarkBg={this.props.toggleDarkBg} userId={this.props.userId} mode={this.state.mode}/>
+                <NewSessionAndTimerContainerTop p={this.props.p} shiftMode={this.shiftMode} mode={this.state.mode}/>
+                <PomodoroContainer p={this.props.p} mode={this.state.mode} setTimerState={this.setTimerState} timerState={this.state.timerState}/>
+                <NewSessionContainer p={this.props.p} userCustomizedReviews={this.props.userCustomizedReviews} newTopic={this.props.newTopic} toggleDarkBg={this.props.toggleDarkBg} userId={this.props.userId} mode={this.state.mode}/>
             </div>
         )
     }

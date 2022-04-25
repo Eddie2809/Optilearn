@@ -7,9 +7,9 @@ export default class Leftnav extends Component{
     render(){
         return(
             <div className="Leftnav hide-for-mobile">
-                <p className="nav-option" onClick={() => this.changeTabState('mytopics')}>Mis Temas</p>
-                <p className="nav-option" onClick={() => this.changeTabState('history')}>Historial</p>
-                <p className="nav-option" onClick={() => this.changeTabState('missed')}>Sesiones Perdidas</p>
+                <p className="nav-option" onClick={() => this.changeTabState('mytopics')}>{this.props.p.myTopics}</p>
+                <p className="nav-option" onClick={() => this.changeTabState('history')}>{this.props.p.history}</p>
+                <p className="nav-option" onClick={() => this.changeTabState('missed')}>{this.props.p.missedSessions}</p>
             </div>
         )
     }

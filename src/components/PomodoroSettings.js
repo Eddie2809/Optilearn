@@ -15,23 +15,23 @@ export default class PomodoroSettings extends Component{
             <div className="PomodoroSettings">
                 <div className="settings">
                     <div className="settings-row">
-                        <p>Sesiones a realizar</p>
+                        <p>{this.props.p.sessionsToBeDone}</p>
                         <input type="number" name="" id=""/>
                     </div>
                     <div className="settings-row">
-                        <p>Tiempo de concentración</p>
+                        <p>{this.props.p.focusTime}</p>
                         <input type="number" name="" id=""/>
                     </div>
                     <div className="settings-row">
-                        <p>Descanso corto</p>
+                        <p>{this.props.p.shortRest}</p>
                         <input type="number" name="" id=""/>
                     </div>
                     <div className="settings-row">
-                        <p>Descanso largo</p>
+                        <p>{this.props.p.longRest}</p>
                         <input type="number" name="" id=""/>
                     </div>
                     <div className="settings-row">
-                        <p>Sesiones antes del descanso largo</p>
+                        <p>{this.props.p.sessionsBeforeLongRest}</p>
                         <input type="number" name="" id=""/>
                     </div>
                 </div>

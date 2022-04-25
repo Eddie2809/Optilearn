@@ -10,7 +10,7 @@ export default class Signup extends Component{
             email: "",
             password: "",
             passwordVerification: "",
-            securityCode: ""
+            securityCode: "moreletii2021"
         }
     }
     onSubmit = () => {
@@ -53,17 +53,16 @@ export default class Signup extends Component{
         return(
             <div className="Signup">
                 <div className="form">
-                    <p>Register</p>
+                    <p>{this.props.p.signup}</p>
                     <div>
-                        <input onChange={event=>this.setState({name: event.target.value})} placeholder="Name" type="text"></input>
-                        <input onChange={event=>this.setState({lastname: event.target.value})} placeholder="Lastname" type="text"></input>
-                        <input onChange={event=>this.setState({email: event.target.value})} placeholder="Email" type="email"></input>
-                        <input onChange={event=>this.setState({password: event.target.value})} placeholder="Password" type="password"></input>
-                        <input onChange={event=>this.setState({passwordVerification: event.target.value})} placeholder="Repeat your password" type="password"></input>
-                        <input onChange={event=>this.setState({securityCode: event.target.value})} placeholder="Security code" type="password"></input>
+                        <input onChange={event=>this.setState({name: event.target.value})} placeholder={this.props.p.name} type="text"></input>
+                        <input onChange={event=>this.setState({lastname: event.target.value})} placeholder={this.props.p.lastname} type="text"></input>
+                        <input onChange={event=>this.setState({email: event.target.value})} placeholder={this.props.p.email} type="email"></input>
+                        <input onChange={event=>this.setState({password: event.target.value})} placeholder={this.props.p.password} type="password"></input>
+                        <input onChange={event=>this.setState({passwordVerification: event.target.value})} placeholder={this.props.p.repeatYourPassword} type="password"></input>
                     </div> 
-                    <button onClick={this.onSubmit}>Sign up</button>
-                    <p onClick={()=>this.props.onChangeRoute("login")} className="signup-link">Sign in</p>
+                    <button onClick={this.onSubmit}>{this.props.p.signup}</button>
+                    <p onClick={()=>this.props.onChangeRoute("login")} className="signup-link">{this.props.p.login}</p>
                 </div>
             </div>
         )

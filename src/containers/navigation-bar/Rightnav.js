@@ -15,9 +15,8 @@ export default class Rightnav extends Component{
     render(){
         return(
             <div className="Rightnav hide-for-mobile">
-                {/*<p className="nav-option" onClick={() => this.changeTabState('settings')}>Configuración</p>*/}
-                <p className="nav-option" onClick={() => this.props.toggleDarkBg(true,5)}>Añadir repasos personalizados</p>
-                <p onClick={this.props.logOut} className="nav-option">Cerrar sesión</p>
+                <p className="nav-option" onClick={() => this.props.toggleDarkBg(true,5)}>{this.props.p.addCustomizedReviews}</p>
+                <p onClick={this.props.logOut} className="nav-option">{this.props.p.logOut}</p>
             </div>
         )
     }

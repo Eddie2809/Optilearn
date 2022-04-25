@@ -51,7 +51,7 @@ export default class History extends Component{
                 <div className="list">
                     {this.loadHistoryItems()}
                 </div>
-                <div className="delete-history" onClick={()=>this.props.toggleDarkBg(true,2)}>Limpiar historial</div>
+                <div className="delete-history" onClick={()=>this.props.toggleDarkBg(true,2)}>{this.props.p.deleteHistory}</div>
             </div>
         )
     }

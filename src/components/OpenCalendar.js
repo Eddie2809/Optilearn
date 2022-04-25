@@ -32,7 +32,7 @@ export default class Calendar extends Component{
     render(){
         return(
             <div onClick={this.openCalendar} className="openCalendar">
-                <p>Abrir calendario</p>
+                <p>{this.props.p.openCalendar}</p>
             </div>
         )
     }   

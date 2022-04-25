@@ -37,7 +37,7 @@ export default class Missed extends Component{
         const buildMissedItems = this.props.missed.map((review,i)=>{
             date = new Date(review.date)
             date = (date.getDate()<10? ("0" + (date.getDate())):date.getDate()) + "/" + (date.getMonth()+1<10? ("0" + (date.getMonth()+1)):date.getMonth()+1) + "/" + date.getFullYear()
-            return <MissedReview toggleDarkBg={this.props.toggleDarkBg} doReview={this.props.doReview} date={date} name={review.topicName} id={review.id} topicId={review.topicId} numberOfCompletedReviews={review.numberOfCompletedReviews} numberOfReviews={review.numberOfReviews} undoReview={this.props.undoReview}/>
+            return <MissedReview p={this.props.p} toggleDarkBg={this.props.toggleDarkBg} doReview={this.props.doReview} date={date} name={review.topicName} id={review.id} topicId={review.topicId} numberOfCompletedReviews={review.numberOfCompletedReviews} numberOfReviews={review.numberOfReviews} undoReview={this.props.undoReview}/>
         })
 
         return buildMissedItems;
@@ -46,7 +46,7 @@ export default class Missed extends Component{
         return(
             <div ref={this.wrapperRef} className="Missed tab hide-for-mobile">
                 <div className="list">{this.loadMissedItems()}</div>
-                <div className="delete-missed-reviews" onClick={()=>this.props.toggleDarkBg(true,4)}>Borrar todo</div>
+                <div className="delete-missed-reviews" onClick={()=>this.props.toggleDarkBg(true,4)}>{this.props.p.deleteMissedSessions}</div>
             </div>
         )
     }

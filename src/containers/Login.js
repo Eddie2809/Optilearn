@@ -1,13 +1,17 @@
 import React,{Component} from 'react'
 import Logo from '../img/logo.png'
+import Languages from '../Languages'
 
 export default class Login extends Component{
     constructor(){
         super()
         this.state = {
             email: "",
-            password: ""
+            password: "",
         }
+    }
+    fillForTest = () => {
+       this.setState({email: 'TestOptilearn@gmail.com', password: 'ultrasecret'}) 
     }
     onSubmit = () => {
         this.props.toggleDarkBg(true,10)
@@ -38,8 +42,7 @@ export default class Login extends Component{
                     let expirationDate = new Date()
                     expirationDate.setTime(expirationDate.getTime() + (1000*60*60*24*30))
                     let newCookie =  'SID=' + res + ';expires=' + expirationDate + ';'
-                    document.cookie = newCookie
-                    console.log(newCookie)
+                    if(this.state.email !== 'TestOptilearn@gmail.com') document.cookie = newCookie
                 })
 
                 this.props.getUserData(user)
@@ -48,16 +51,28 @@ export default class Login extends Component{
             }
         })
     }
+    onChangeLanguage = (lan) => {
+        switch(lan){
+            case 'es': this.props.changeLanguage(Languages.es,lan); break;
+            case 'en': this.props.changeLanguage(Languages.en,lan); break;
+            default: this.props.changeLanguage(Languages.en,lan); break;
+        }
+    }
     render(){
         return(
             <div className="Login">
                 <img src={Logo} alt="logo"></img>
                 <div className="form">
-                    <p>Ingresar</p>
-                    <input onChange={event=>this.setState({email: event.target.value})} placeholder="correo" type="email"></input>
-                    <input onChange={event=>this.setState({password: event.target.value})} placeholder="contraseña" type="password"></input>
-                    <button onClick={this.onSubmit}>Iniciar sesión</button>
-                    <p className="signin-link" onClick={()=>this.props.onChangeRoute('signup')}>Regístrate</p>
+                    <p>{this.props.p.login}</p>
+                    <select onChange={ (event) => this.onChangeLanguage(event.target.value)}>
+                        <option value="en">{this.props.p.langs.english}</option>
+                        <option value="es">{this.props.p.langs.spanish}</option>
+                    </select>
+                    <input onChange={event=>this.setState({email: event.target.value})} value = {this.state.email} placeholder={this.props.p.email} type="email"></input>
+                    <input onChange={event=>this.setState({password: event.target.value})} value={this.state.password} placeholder={this.props.p.password} type="password"></input>
+                    <button onClick={this.onSubmit}>{this.props.p.login}</button>
+                    <button onClick={this.fillForTest}>Test Optilearn</button>
+                    <p className="signin-link" onClick={()=>this.props.onChangeRoute('signup')}>{this.props.p.signup}</p>
                 </div>
             </div>
         )

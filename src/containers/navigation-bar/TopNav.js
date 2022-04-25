@@ -23,17 +23,17 @@ export default class TopNav extends Component{
     render(){
         return(
             <div className="TopNav">
-                <Leftnav openTab={this.openTab} openedTab={this.state.openedTab}/>
+                <Leftnav p={this.props.p} openTab={this.openTab} openedTab={this.state.openedTab}/>
                 <Logo/>
-                <Rightnav toggleDarkBg={this.props.toggleDarkBg} logOut={this.props.logOut} openTab={this.openTab} openedTab={this.state.openedTab}/>
+                <Rightnav p={this.props.p} toggleDarkBg={this.props.toggleDarkBg} logOut={this.props.logOut} openTab={this.openTab} openedTab={this.state.openedTab}/>
                 <HamburgerMenu/>
                 {
                     this.state.openedTab==='history'?
-                    <History openTab={this.openTab} toggleDarkBg={this.props.toggleDarkBg} history={this.props.history} undoReview={this.props.undoReview}/>:
+                    <History p={this.props.p} openTab={this.openTab} toggleDarkBg={this.props.toggleDarkBg} history={this.props.history} undoReview={this.props.undoReview}/>:
                     this.state.openedTab==='missed'?
-                    <Missed openTab={this.openTab} toggleDarkBg={this.props.toggleDarkBg} doReview={this.props.doReview} missed={this.props.missed}/>:
+                    <Missed p={this.props.p} openTab={this.openTab} toggleDarkBg={this.props.toggleDarkBg} doReview={this.props.doReview} missed={this.props.missed}/>:
                     this.state.openedTab==='mytopics'?
-                    <MyTopics openTab={this.openTab} toggleDarkBg={this.props.toggleDarkBg} topics={this.props.topics}/>:
+                    <MyTopics p={this.props.p} openTab={this.openTab} toggleDarkBg={this.props.toggleDarkBg} topics={this.props.topics}/>:
                     this.state.openedTab==='settings'?
                     <Settings/>:
                     ''

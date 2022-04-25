@@ -48,10 +48,9 @@ button{
 }
 
 .dark-background{
-    position: absolute;
+    position: fixed;
     height: 100vh;
     width: 100vw;
-    z-index: 100;
 }
 
 .body-content{
@@ -114,13 +113,15 @@ button{
 }
 
 .darkBgAppear{
-    animation: darkBgAppear 0.4s linear;
+    animation: darkBgAppear 0.2s linear;
     background-color: rgba(0,0,0,0.5);
+    z-index: 100;
 }
 
 .darkBgDisappear{
     animation: darkBgDisappear 0.4s linear;
-    background-color: rgba(0,0,0,0)
+    background-color: rgba(0,0,0,0);
+    z-index: -30;
 }
 
 @keyframes darkBgAppear{
@@ -132,7 +133,7 @@ button{
     }
 }
 
-@keyframes dargBgDisappear{
+@keyframes darkBgDisappear{
     0%{
         background-color: rgba(0,0,0,0.5);
     }

@@ -21,7 +21,7 @@ export default class ReferencesPopup extends Component{
         return(
             <div className="ReferencesPopup pop-up">
                 <div onClick={()=>this.props.toggleDarkBg(false,0)} className="quit"><div className="right"></div><div className="left"></div></div>
-                <p className="title">Referencias:</p>
+                <p className="title">{this.props.p.ref}</p>
                 <div className="box">
                     <p>{this.state.references}</p>
                 </div>

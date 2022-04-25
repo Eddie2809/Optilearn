@@ -44,17 +44,17 @@ export default class MyTopics extends Component{
 
     render(){
         const loadTopicItems = this.props.topics.map((topic)=>{
-            return <TopicItem toggleDarkBg={this.props.toggleDarkBg} name={topic.name} id={topic.id}/>
+            return <TopicItem p={this.props.p} toggleDarkBg={this.props.toggleDarkBg} name={topic.name} id={topic.id}/>
         })
         return(
             <div ref={this.wrapperRef} className="MyTopics tab hide-for-mobile">
                 <div className="show-completed-topics">
-                    Ocultar temas completados<input onClick={this.toggleCompletedTopics} type="checkbox"></input>
+                    {this.props.p.hideCompletedTopics}<input onClick={this.toggleCompletedTopics} type="checkbox"></input>
                 </div>
                 <div className="list">
                     {loadTopicItems}
                 </div>
-                <div className="delete-completed-topics" onClick={()=>this.props.toggleDarkBg(true,8)}>Borrar temas completados</div>
+                <div className="delete-completed-topics" onClick={()=>this.props.toggleDarkBg(true,8)}>{this.props.p.deleteCompletedTopics}</div>
             </div>
         )
     }

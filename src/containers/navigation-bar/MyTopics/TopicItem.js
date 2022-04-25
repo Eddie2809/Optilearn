@@ -7,8 +7,8 @@ export default class TopicItem extends Component{
         return(
             <div className="TopicItem list-item hide-for-mobile">
                 <p className="name">{this.props.name}</p>
-                <button className="delete" onClick={()=>this.props.toggleDarkBg(true,6,this.props.id)}>Borrar</button>
-                <button onClick={()=>this.props.toggleDarkBg(true,1,this.props.id)}>Editar</button>
+                <button className="delete" onClick={()=>this.props.toggleDarkBg(true,6,this.props.id)}>{this.props.p.delete}</button>
+                <button onClick={()=>this.props.toggleDarkBg(true,1,this.props.id)}>{this.props.p.edit}</button>
             </div>
         )
     }

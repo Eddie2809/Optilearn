@@ -6,8 +6,8 @@ export default class PomodoroContainer extends Component{
     render(){
         return(
             <div className={"PomodoroContainer " + (this.props.mode? "flipY ":" ")}>
-                <PomodoroClock timerState={this.props.timerState}/>
-                <PomodoroSettings setTimerState={this.props.setTimerState}/>
+                <PomodoroClock p={this.props.p} timerState={this.props.timerState}/>
+                <PomodoroSettings p={this.props.p} setTimerState={this.props.setTimerState}/>
             </div>
         )
     }

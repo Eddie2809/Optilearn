@@ -35,7 +35,7 @@ export default class Reschedule extends Component{
 
     generateMonths = () => {
         let today = new Date()
-        let months = [['Jan','Enero'],['Feb','Febrero'],['Mar','Marzo'],['Apr','Abril'],['May','Mayo'],['Jun','Junio'],['Jul','Julio'],['Aug','Agosto'],['Sep','Septiembre'],['Oct','Octubre'],['Nov','Noviembre'],['Dec','Diciembre']]
+        let months = [['Jan',this.props.p.january],['Feb',this.props.p.february],['Mar',this.props.p.march],['Apr',this.props.p.april],['May',this.props.p.may],['Jun',this.props.p.june],['Jul',this.props.p.july],['Aug',this.props.p.august],['Sep',this.props.p.september],['Oct',this.props.p.october],['Nov',this.props.p.november],['Dec',this.props.p.december]]
     
         let monthsElements = months.map((m,i)=>{
             if(i === today.getMonth()) return <option selected value={m[0]}>{m[1]}</option>
@@ -69,13 +69,13 @@ export default class Reschedule extends Component{
         return(
             <div className="Reschedule pop-up">
                 <div onClick={()=>this.props.toggleDarkBg(false,0)} className="quit"><div className="right"></div><div className="left"></div></div>
-                <p>Ingresa la nueva fecha: </p>
+                <p>{this.props.p.enterTheNewDate}</p>
                 <div>
                     {this.generateDays()}
                     {this.generateMonths()}
                     {this.generateYears()}
                 </div>
-                <button onClick={this.submitNewDate}>Listo</button>
+                <button onClick={this.submitNewDate}>{this.props.p.done}</button>
             </div>
         )
     }

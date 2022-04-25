@@ -24,7 +24,6 @@ export default class Calendar extends React.Component{
             
         for(let i = 0; i < this.props.reviews.length; i++){
             date = new Date((this.props.reviews[i].review_date).slice(0,10)+'T00:00:00')
-            console.log(date.getTime() > today.getTime())
             color = (this.props.reviews[i].done? "#4AC563":(date.getTime() > today.getTime()? "#EBF144": "#FF3737"))
             events.push({
                 title: mapTopicIdName[this.props.reviews[i].topic_id],
@@ -42,15 +41,15 @@ export default class Calendar extends React.Component{
             <div className="calendar">
                 <div className='colors'>
                     <ul>
-                        <li className="green">Repaso realizado</li>
-                        <li className="blue">Sesión de estudio inicial</li>
-                        <li className="yellow">Repaso por realizar</li>
-                        <li className='red'>Repaso no realizado</li>
+                        <li className="green">{this.props.p.completedReview}</li>
+                        <li className="blue">{this.props.p.initialStudySession}</li>
+                        <li className="yellow">{this.props.p.reviewToBeDone}</li>
+                        <li className='red'>{this.props.p.reviewNotDone}</li>
                     </ul>
                 </div>
                 <FullCalendar
                     height="100vh"
-                    locale= "esLocale"
+                    locale = {this.props.locale}
                     plugins={[ dayGridPlugin ]}
                     initialView="dayGridMonth"
                     events={this.loadEvents()}

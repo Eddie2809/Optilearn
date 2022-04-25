@@ -9,12 +9,12 @@ export default class DeleteTopic extends Component{
         return(
             <div className="DeleteTopic pop-up">
                 <div>
-                    <p>¿Seguro que quieres borrar este tema?</p>
-                    <p className="warning">(Esto eliminará permanentemente este tema junto con sus referencias y sus respectivos repasos)</p>
+                    <p>{this.props.p.areYouSureYouWantToDeleteThisTopic}</p>
+                    <p className="warning">{this.props.p.deleteTopicWarning}</p>
                 </div>
                 <div>
-                    <button onClick={()=>this.props.toggleDarkBg(false,0)} className="cancel">No, regresar</button>
-                    <button onClick={this.deleteTopic} className="delete">Sí, borrar</button>
+                    <button onClick={()=>this.props.toggleDarkBg(false,0)} className="cancel">{this.props.p.noGoBack}</button>
+                    <button onClick={this.deleteTopic} className="delete">{this.props.p.yesDelete}</button>
                 </div>
             </div>
         )
