@@ -179,7 +179,7 @@ export default class App extends Component {
   }
 
   logOut = () => {
-    document.cookie = "expires=" + new Date(0).toUTCString()
+    document.cookie = "SID= ;expires=" + new Date(0).toUTCString()
     this.setState({
       route: 'login',
       darkBg: false,
